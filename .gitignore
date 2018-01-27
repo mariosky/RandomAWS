@@ -1,0 +1,8 @@
+auto/
+img/converted*
+*.pdf
+*.aux
+*.log
+*.idx
+*.blg
+*.bbl
