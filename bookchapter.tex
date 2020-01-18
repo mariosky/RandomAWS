@@ -1,33 +1,33 @@
-% RECOMMENDED %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[graybox]{svmult}
-\usepackage[misc]{ifsym}
-\usepackage{mathptmx}       % selects Times Roman as basic font
-\usepackage{helvet}         % selects Helvetica as sans-serif font
-\usepackage{courier}        % selects Courier as typewriter font
-\usepackage{type1cm}        % activate if the above 3 fonts are
-\usepackage{multirow}
-\usepackage{makeidx}         % allows index generation
-\usepackage{graphicx}        % standard LaTeX graphics tool
-                             % when including figure files
-\usepackage{multicol}        % used for the two-column index
-\usepackage[bottom]{footmisc}% places footnotes at page bottom
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
 \usepackage{subfigure}
-\usepackage{url}
 
-\makeindex
 \begin{document}
 
-\title*{Random Selection of Parameters in Asynchronous Pool-Based Evolutionary Algorithms}
-\titlerunning{Random Selection of Parameters}
+\title{Random Selection of Parameters in Asynchronous Pool-Based Evolutionary Algorithms\\
+}
 
-\author{ Mario Garc\'ia-Valdez \and Ren\'e M\'arquez \and J.J. Merelo \and  Leonardo Trujillo}
-\authorrunning{Mario Garc\'ia-Valdez et al.}
-
-\institute{ M. Garc\'ia-Valdez (\Letter) \and  R. M\'arquez \and  L. Trujillo \at Instituto Tecnol\'ogico de Tijuana \\ \email{mario@tectijuana.edu.mx}
-\and J.J. Merelo (\Letter) \at Computer Architecture and Technology, University of Granada, Spain \\ \email{jjmerelo@gmail.com}}
+\author{\IEEEauthorblockN{Mario Garc\'ia-Valdez, Ren\'e M\'arquez, Leonardo Trujillo}
+  \IEEEauthorblockA{\textit{Instituto Tecnol\'ogico de Tijuana} \\
+    mario@tectijuana.edu.mx}
+  \and
+  \IEEEauthorblockA{J.J. Merelo}
+  \IEEEauthorblockN{Computer Architecture and Technology\\
+    University of Granada, Spain\\
+    jjmerelo@gmail.com}
+}
 
 \maketitle
-\abstract{Synchronous operation is not the most natural setup in distributed algorithms. In grid,
+
+\begin{abstract}
+  Synchronous operation is not the most natural setup in distributed algorithms. In grid,
 cloud or volunteer setups nodes are heterogeneous, or simply are not
 available at the exact same time; this is a challenge for the researcher if
 their full performance is going to be actually leveraged. We are
@@ -50,11 +50,15 @@ test functions for real-valued optimization (Rastrigin, Griewank, De Jong, Schaf
 and Ackley) and the OneMax binary problem. The results suggest that this approach can yield
 a performance which is competitive with instances of the
 algorithm using workers with parameters tuned specifically for
-the benchmark.}
+the benchmark.
+\end{abstract}
 
 
-\keywords{Distributed Evolutionary Algorithms, Volunteer Computing,
-  Cloud Computing}
+\begin{IEEEkeywords}
+  Distributed Evolutionary Algorithms, Volunteer Computing,
+  Cloud Computing
+\end{IEEEkeywords}
+
 \section{Introduction}
 
 %Why Parallel
@@ -493,7 +497,7 @@ Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
-\bibliographystyle{spmpsci}
+\bibliographystyle{IEEEtran}
 \bibliography{biblio,evospace-i,parameters,volunteer,geneura}
 
 
