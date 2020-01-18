@@ -310,15 +310,15 @@ representation for each individual.
     \centering
     \subfigure [2 workers]
     {
-        \includegraphics[width=3in]{img/2w_onemax_100_box.png}
+        \includegraphics[width=4in]{img/2w_onemax_100_box.png}
     }
     \subfigure  [6 workers]
     {
-        \includegraphics[width=3in]{img/6w_onemax_100_box.png}
+        \includegraphics[width=4in]{img/6w_onemax_100_box.png}
     }
     \subfigure  [12 workers]
     {
-        \includegraphics[width=3in]{img/12w_onemax_100_box.png}
+        \includegraphics[width=4in]{img/12w_onemax_100_box.png}
     }
 
     \caption{100 experiments with random parameters for the 128 Bit OneMax problem.
@@ -345,7 +345,7 @@ to the total wall-clock time.
 
 \begin{figure*}[h!t]
     \centering
-        \includegraphics[width=10cm]{img/one_max_comp.png}
+        \includegraphics[width=12cm]{img/one_max_comp.png}
     \caption{Comparison of 30 runs of the 128 Bit OneMax problem.
     Box-plot of the number of evaluations needed for solution, with a 2, 6 and 12 workers
     homogeneous configuration as a box-plot to the left of the $x$ axis
@@ -374,11 +374,11 @@ but checking the cases when that happens is left as future work.
     \centering
     \subfigure  [6 workers]
     {
-        \includegraphics[width=2.2in]{img/6w_griewank_100_box.png}
+        \includegraphics[width=3in]{img/6w_griewank_100_box.png}
     }
     \subfigure  [12 workers]
     {
-        \includegraphics[width=2.2in]{img/12w_griewank_100_box.png}
+        \includegraphics[width=3in]{img/12w_griewank_100_box.png}
     }
 
     \caption{100 experiments with random parameters for the 100 dimensions Griewank
@@ -391,11 +391,11 @@ but checking the cases when that happens is left as future work.
     \centering
     \subfigure  [Homogeneous]
     {
-        \includegraphics[width=2.2in]{img/griewank_evals_homo.png}
+        \includegraphics[width=3in]{img/griewank_evals_homo.png}
     }
     \subfigure  [Heterogeneous]
     {
-        \includegraphics[width=2.2in]{img/griewank_evals_hetereo.png}
+        \includegraphics[width=3in]{img/griewank_evals_hetereo.png}
     }
       \caption{ 30 runs on the Griewank function. Box-plot of the number of evaluations needed for solution,
                  with an (a) Homogeneous configuration, and (b) Heterogeneous configuration.}
@@ -406,11 +406,11 @@ but checking the cases when that happens is left as future work.
     \centering
     \subfigure  [Homogeneous]
     {
-        \includegraphics[width=2.2in]{img/schaffer_evals_homo.png}
+        \includegraphics[width=3in]{img/schaffer_evals_homo.png}
     }
     \subfigure  [Heterogeneous]
     {
-        \includegraphics[width=2.2in]{img/schaffer_evals_hetereo.png}
+        \includegraphics[width=3in]{img/schaffer_evals_hetereo.png}
     }
 
 
@@ -421,9 +421,10 @@ but checking the cases when that happens is left as future work.
 %
 \begin{figure*}[t]
     \centering
-        \includegraphics[width=4.5in]{img/table.png}
+        \includegraphics[width=5in]{img/table.png}
     \caption{Summary of results obtained for the five floating point
       optimization problems. }
+% not clear why this is an image? Can't we use data? - JJ
     \label{fig:summary}
 \end{figure*}
 
@@ -489,9 +490,7 @@ parametrization technique seems to achieve bad results.
 
 \section*{Acknowledgments}
 
-This work has been supported in part by:  Ministerio espa\~{n}ol de
-Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P
-(UGR-EPHEMECH). Proyecto CONACYT Fronteras de la Ciencia FC-2015-2:944 "Aprendizaje evolutivo a gran escala".
+% This should be updated
 
 
 %----------------------------------------------------------------------------------------
