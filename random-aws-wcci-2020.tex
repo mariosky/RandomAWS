@@ -63,36 +63,35 @@ specially tuned for the benchmark.
 \section{Introduction}
 
 %Why Parallel
-Biological evolution is an intrinsically parallel, distributed and
-asynchronous process; however, some of these features are not
-trivially included into standard EAs, which are mostly implemented as
-sequential and synchronous algorithms \cite{eiben}.  A large body of
-work exists in EA parallelization, using multiple CPU cores, multiple
-nodes and GPUs \cite{cantu2000efficient,hofmann2013performance}.
-However, distributed and asynchronous EAs have started to become
-common only recently, in an effort to exploit computing resources
-available everywhere from personal computers, smart phones and
-tablets, as well as massive data centers \cite{agajaj,FlexGP}.  These
-resources are easily accessible through popular Internet technologies,
-such as cloud computing, peer-to-peer (P2P), and web
-environments. Moreover, these technologies are intended for the
+Biological evolution is a process with intrinsical properties that we can find
+in some computational systems, that are asynchronous, parallel, and distributed;
+however, it is not trivial to include some of these characteristics in standard
+EAs, and many remain as sequential and synchronous algorithms \cite{eiben}.
+A large body of work exists about the parallelization EAs, using multi-core, 
+distributed systems, and GPUs \cite{cantu2000efficient,hofmann2013performance}.
+However, only recently asynchronous and distributed EAs have started to become
+a common practice, intending to exploit computing resources available everywhere
+from personal computers, smartphones, and tablets, as well as data 
+centers \cite{agajaj,FlexGP}. 
+
+Access to these resources can be easily achived through popular Internet 
+technologies, such as cloud computing, peer-to-peer (P2P), and web environments. 
+Moreover, these technologies are intended for the
 development of parallel, distributed and asynchronous systems, such
 that an EA developed on top of them could easily reap the benefits of
 these features.
 
 %Pool Based
-In this work, we are interested in EAs that follow a
-pool-based approach, where the search process is conducted by a
-collection of possibly heterogeneous processes that collaborate using
-a shared repository or population pool. We will refer to such
-algorithms as Pool-based EAs or PEAs, and highlight the fact that such
-systems are intrinsically parallel, distributed and asynchronous.
+The focus of this work is on Pool-based EAs or PEAs, in which the search
+is distributed to many processes that collaborate using a shared
+repository or population pool. We highlight the fact that such
+systems are intrinsically asynchronous, parallel, and distributed.
 The particular PEA used in this paper is implemented on
 the EvoSpace framework \cite{GValdez2015}
-in which distributed nodes (or workers) asynchronously interact
-with the pool by taking a sample of the population and performing
-a local evolutionary search on the population sample, then returning
-to the pool the newly evolved solutions.
+in which distributed nodes (or workers) asynchronously take a
+sample of the population pool,  perform a local evolutionary search 
+on it, and after several iterations, returns the sample contining 
+newly evolved solutions.
 % EA Paramaters
 Like any other EA, the performance of the complete search procedure will depend
 on the correct tuning of the parameters. However, settings
@@ -124,20 +123,22 @@ Having multiple EAs running in parallel with different parameters could be
 equivalent to performing a dynamic adaptation, having some workers exploring
 and others exploiting at the same time.
 % Evaluate in EvoSpace
-In the study presented here, a recent approach called Randomized Parameter
+In the study presented here, a method called Randomized Parameter
 Setting Strategy (RPSS) \cite{fuku1,fuku2} is applied to EvoSpace and tested on
 several benchmark problems, extending the work presented in \cite{garcia2014randomized}
 in which only trap functions were considered.
-The idea behind RPSS is that, in a distributed EA, parametrization may be
-completely skipped, with research showing that when the
-number of distributed process is large enough, algorithm parameters can be set
-randomly and still achieve good overall results. However, work on RPSS has
-mostly been focused on the well-known Island Model for EAs, a distributed but synchronous system. In this paper we will apply it to asynchronous systems implemented using a pool-based strategy.
+The objective of RPSS is that, in a distributed EA, parametrization 
+can be skipped entirely,With research showing that when the number of islands
+is large enough, the algorithm parameters of each island can be randomly
+set and still achieving good results overall. However, most of the work on 
+RPSS has been in the well-known Island Model for EAs, 
+a distributed but synchronous system. In this paper we will apply 
+it to asynchronous EAs implemented using a pool-based strategy.
 
-The remainder of the paper proceeds as follows.  Section \ref{sec:work}
-reviews related work. Afterwards, Section \ref{sec:evo} briefly describes the
-proposed EvoSpace cloud implementation, the experimental work is presented in
-Section \ref{sec:experiments}. Finally, a summary and concluding remarks are given in
+The paper organization is as follows. In Section \ref{sec:work} we
+review the related work. Afterwards,in Section \ref{sec:evo} we briefly describe the
+proposed EvoSpace cloud implementation, the experimental work is next in
+Section \ref{sec:experiments}. Finally, we give summary and concluding remarks in
 Section \ref{sec:conclusions}.
 
 \section{Related Work}
