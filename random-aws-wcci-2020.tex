@@ -58,7 +58,7 @@ the benchmark.
 
 \begin{IEEEkeywords}
   Distributed Evolutionary Algorithms, Volunteer Computing,
-  Cloud Computing
+  Cloud Computing, pool-based evolutionary algorithms, parameter optimization. 
 \end{IEEEkeywords}
 
 \section{Introduction}
@@ -151,30 +151,27 @@ uses the well-known Berkeley Open Infrastructure for Network Computing (BOINC) t
 heterogeneous network of volunteer computers using virtual machines. Another  example is
 found in the FlexGP system developed by Sherry et al. \cite{FlexGP}. FlexGP is probably the first large scale GP system
 that runs on the cloud, using an Island model approach and implemented over Amazon EC2 with a
-socket-based client-server architecture. Even recently, this client-server architecture has been used profitably by researchers such as Salza and Ferrucci \cite{SALZA2019276} for speeding up evolutionary algorithms in a cloud infrastructure.
+socket-based client-server architecture. Even recently, this client-server architecture has been used profitably by researchers such as Salza and Ferrucci \cite{SALZA2019276} for speeding up evolutionary algorithms in a cloud infrastructure. Lately, implementations tend to use Docker containers instead of virtual machines \cite{Dziurzanski2020}.
 
-Distributed evolutionary algorithms are a good match for fixed infrastructure, such as clusters or simply multi-core architectures, but another approach to distributed EAs is the so called pool-based architecture \cite{sofea:naco}. In general, a
+Distributed evolutionary algorithms using client-server implementations are a good match for fixed infrastructure, such as clusters, supercomputers or simply multi-core architectures, and they continue to be researched actively \cite{Liu201954}, but another approach to distributed EAs is the so called pool-based architecture \cite{sofea:naco}. In general, a
 pool-based system employs a central repository where (maybe a part of) the evolving population is stored.
 Distributed clients interact with the pool, performing some or all of the basic EA processes
 (selection, genetic operators, survival). An initial work implementing this approach (and without calling it by tha name)
 is that by Merelo et al. \cite{agajaj} implementing a JavaScript based PEA that distributes
 the evolutionary process over the web, providing the added advantage of not requiring the
-installation of additional software in each computing node; a similar approach which uses a blockchain-like pool called FluidDB was also proposed by the same authors in \cite{DBLP:conf/cec/Merelo10}.  Other similar cloud-based solutions
+installation of additional software in each computing node; a similar approach which uses a blockchain-like data store called FluidInfo \cite{radcliffe2012getting} was also proposed by the same authors in \cite{DBLP:conf/cec/Merelo10}.  Other similar cloud-based solutions
 are based on a global queue of tasks and a Map-Reduce implementation which normally handles failures
-by the re-execution of  tasks \cite{fazenda2012,di2013towards,FlexGP}. Using the BOINC
-volunteer platform  Smaoui et al. \cite{FekiNG09} uses work units that consist of a fitness
+by the re-submission of  tasks \cite{fazenda2012,di2013towards,FlexGP}. This work was initiated by distributing tasks using the BOINC
+volunteer platform;  Smaoui et al. \cite{FekiNG09} uses work units that consist of a fitness
 evaluation task and multiple replicas  were produced and sent to different clients.
 
 While using a distributed framework can ease the computational cost, it can also exacerbate the first issue mentioned above;
 i.e., it increases the size of the algorithm parameter space, which makes parameter tuning a more difficult task.
-The issue of optimal parametrization of EAs is a widely studied subject \cite{de2007parameter},
+The issue of optimal parametrization of EAs has been  widely studied \cite{de2007parameter},
 with many approaches in literature. For instance, one of the most successful approaches
-is the F-Racing and iterative F-Racing techniques \cite{lopez2011irace}.
-However, while such algorithms can find high performance parametrizations,
-they require additional computational effort which can be too expensive in some applications
-(even if they are more efficient than an exhaustive search).
+is the F-Racing and iterative F-Racing techniques \cite{lopez2011irace}; these use optimization techniques to explore the parameter space; parameter setting can also be approached theoretically, at least in a class of optimization problems, as proved by Doerr et al. in \cite{doerr2020theory}. However, this implies that either you need to run a meta-algorithm in order to find an efficient parametrization, or try to look for a theoretical approach to the specific problem that is able to give you a good parametrization. 
 
-This paper is inspired by the approach proposed by Gong and Fukunaga
+In this paper, we will take a lateral approach to this problem, inspired by the approach proposed by Gong and Fukunaga
 called RPSS \cite{fuku1,fuku2}.
 Originally proposed for an Island Model EA, RPSS sets the parameter values of each subpopulation randomly,
 without any kind of tuning or self-adaptive process. The RPSS approach is to set the parameters
@@ -191,17 +188,16 @@ five high-dimensional real-valued optimization benchmarks. Our goal is
 to test how general is this approach by considering different search
 spaces and different forms of fitness landscapes.
 
-
-\section{EvoSpace Cloud Implementation}
-\label{sec:evo}
-
 \begin{figure*}[h!tbp]
     \centering
         \includegraphics[width=10cm]{img/EvoSpaceAWS.png}
     \caption{Main components and data-flow in the cloud version of EvoSpace we are using in this paper.}
     \label{fig:evospace}
   \end{figure*}
-  %
+%
+\section{EvoSpace Cloud Implementation}
+\label{sec:evo}
+
 The EvoSpace framework, which was introduced in \cite{Evospace}, and
 since then used in several applications \cite{GValdez2015} has two components: (i) the EvoSpace
 container that stores the evolving population; and (ii) workers, which execute
@@ -288,29 +284,8 @@ Hereafter, we call this approach the {\em heterogeneous} configuration. Finally,
 with both methods and report the average number of evaluations required by each strategy to find the
 global optimum solution.
 
-The algorithms are first evaluated using the OneMax (or BitCounting) problem proposed by
-Schaffer and Eshelman \cite{SE91}, this is a simple problem consisting in maximizing the number
-of ones of a bitstring. Although the OneMax problem may not justify the use of a distributed
-implementation, i.e. we can argue that it can be solved in a very short time by using a
-single desktop computer, but on the other hand, it offers several advantages as a
-benchmark for new architectures. It is a well-known problem with several
-studies on parameters,  runtime analyses \cite{DBLP:journals/corr/MereloGVB15},
-and distributed implementation
-issues. On the other hand, the drawback of using a benchmark that is not representative of
-real-world problems is that experimental results may be only applicable to
-problems similar to OneMax, where genetic operators are well suited for the
-search in a solution space without deceptive or very large landscapes.
-For the current experiments a 128 bit string was used. Since this
-problem is not computationally demanding, more experiments where conducted for the tuning phase,
-tuning the parameters using 2, 6, and 12 EvoWorkers. Then, following \cite{fuku1},
-five standard real-valued single objective optimization problems
-are used, these are the Rastrigin, Griewank, De Jong, Schaffer  and Ackley functions,
-with the number of dimensions set to 100 in each case. For these problems we use a real-valued vector
-representation for each individual.
-
-\subsection{Results for OneMax}
-
-\begin{figure*}[h!t]
+% I have moved this here to rearrange a bit graphics. This pushed down the whole thing.
+\begin{figure*}[h!tb]
     \centering
     \subfigure [2 workers]
     {
@@ -331,6 +306,39 @@ representation for each individual.
     \label{fig:effort}
   \end{figure*}
   %
+The algorithms are first evaluated using the OneMax (or BitCounting) problem proposed by
+Schaffer and Eshelman \cite{SE91}, this is a simple problem consisting in maximizing the number
+of ones of a bitstring. Although the OneMax problem may not justify the use of a distributed
+implementation, i.e. we can argue that it can be solved in a very short time by using a
+single desktop computer, but on the other hand, it offers several advantages as a
+benchmark for new architectures. It is a well-known problem with several
+studies on parameters,  runtime analyses \cite{DBLP:journals/corr/MereloGVB15},
+and distributed implementation
+issues. On the other hand, the drawback of using a benchmark that is not representative of
+real-world problems is that experimental results may be only applicable to
+problems similar to OneMax, where genetic operators are well suited for the
+search in a solution space without deceptive or very large landscapes.
+For the current experiments a 128 bit string was used. Since this
+problem is not computationally demanding, more experiments where conducted for the tuning phase,
+tuning the parameters using 2, 6, and 12 EvoWorkers. Then, following \cite{fuku1},
+five standard real-valued single objective optimization problems
+are used, these are the Rastrigin, Griewank, De Jong, Schaffer  and Ackley functions,
+with the number of dimensions set to 100 in each case. For these problems we use a real-valued vector
+representation for each individual.
+
+  \begin{figure*}[h!tb]
+    \centering
+        \includegraphics[width=12cm]{img/one_max_comp.png}
+    \caption{Comparison of 30 runs of the 128 Bit OneMax problem.
+    Box-plot of the number of evaluations needed for solution, with a 2, 6 and 12 workers
+    homogeneous configuration as a box-plot to the left of the $x$ axis
+    tick, and heterogeneous configuration to the right.
+    }
+    \label{fig:comp-onemax}
+  \end{figure*}
+%
+\subsection{Results for OneMax}
+
 As mentioned before, the first step is to simulate the manual tuning of the parameters
 by running 100 experiments with random parameters and then selecting the best configuration,
 using the median performance over 5 runs. Since the OneMax problem is solved by almost all
@@ -347,17 +355,6 @@ the number of function evaluations carried out over a unit of time. This implies
 of a good configuration could be found easier when using a higher number of workers, relative
 to the total wall-clock time.
 
-\begin{figure*}[h!t]
-    \centering
-        \includegraphics[width=12cm]{img/one_max_comp.png}
-    \caption{Comparison of 30 runs of the 128 Bit OneMax problem.
-    Box-plot of the number of evaluations needed for solution, with a 2, 6 and 12 workers
-    homogeneous configuration as a box-plot to the left of the $x$ axis
-    tick, and heterogeneous configuration to the right.
-    }
-    \label{fig:comp-onemax}
-  \end{figure*}
-  %
 In Figure~\ref{fig:comp-onemax} the results of 30 runs comparing against the RPSS approach is shown.
 It can be observed that as the number of EvoWorkers increases the median of the time decreases, but
 in this case the best of the heterogeneous solutions (12 workers) is only better than the worst homogeneous
