@@ -143,24 +143,23 @@ Section \ref{sec:conclusions}.
 
 \section{Related Work}
 \label{sec:work}
-There are two important practical issues faced by many EA systems, namely the size of the parameter
-space and the high computational cost when it is compared with mathematical programming or numerical techniques.
+There are two important practical issues faced by many EA systems: the size of the parameter and the cost needed to explore a big search space.
 Concerning the latter, one approach to mitigate this issue is to use parallel or
 distributed implementations \cite{cantu-paz:migration-policies,duda2013gpu}.
-For instance, Fern\'andez et al. \cite{nc} % articulo Paco, Gustavo y Leo publucado en Natural Computing}
+For instance, Fern\'andez et al. \cite{nc} 
 uses the well-known Berkeley Open Infrastructure for Network Computing (BOINC) to distribute EA runs across a
-heterogeneous network of volunteer computers using virtual machines. Another recent example is
+heterogeneous network of volunteer computers using virtual machines. Another  example is
 found in the FlexGP system developed by Sherry et al. \cite{FlexGP}. FlexGP is probably the first large scale GP system
 that runs on the cloud, using an Island model approach and implemented over Amazon EC2 with a
 socket-based client-server architecture.
 
-Another approach to distributed EAs is the so called pool-based architecture. In general, a
-pool-based system employs a central repository (real or virtual) where the evolving population is stored.
+Distributed evolutionary algorithms are a good match for fixed infrastructure, such as clusters or simply multi-core architectures, but another approach to distributed EAs is the so called pool-based architecture \cite{sofea:naco}. In general, a
+pool-based system employs a central repository where (maybe a part of) the evolving population is stored.
 Distributed clients interact with the pool, performing some or all of the basic EA processes
-(selection, genetic operators, survival). A representative work of this approach
+(selection, genetic operators, survival). An initial work implementing this approach (and without calling it by tha name)
 is that by Merelo et al. \cite{agajaj} implementing a JavaScript based PEA that distributes
 the evolutionary process over the web, providing the added advantage of not requiring the
-installation of additional software in each computing node.  Other similar cloud-based solutions
+installation of additional software in each computing node; a similar approach which uses a blockchain-like pool called FluidDB was also proposed by the same authors in \cite{DBLP:conf/cec/Merelo10}.  Other similar cloud-based solutions
 are based on a global queue of tasks and a Map-Reduce implementation which normally handles failures
 by the re-execution of  tasks \cite{fazenda2012,di2013towards,FlexGP}. Using the BOINC
 volunteer platform  Smaoui et al. \cite{FekiNG09} uses work units that consist of a fitness
