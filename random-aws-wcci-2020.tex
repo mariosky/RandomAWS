@@ -89,13 +89,13 @@ a shared repository or population pool. We will refer to such
 algorithms as Pool-based EAs or PEAs, and highlight the fact that such
 systems are intrinsically parallel, distributed and asynchronous.
 The particular PEA used in this paper is implemented on
-the EvoSpace framework  \cite{GValdez2015}
+the EvoSpace framework \cite{GValdez2015}
 in which distributed nodes (or workers) asynchronously interact
 with the pool by taking a sample of the population and performing
 a local evolutionary search on the population sample, then returning
 to the pool the newly evolved solutions.
 % EA Paramaters
-Like any other EA, the performance of the complete search will depend
+Like any other EA, the performance of the complete search procedure will depend
 on the correct tuning of the parameters. However, settings
 must be optimized to each particular problem \cite{de2007parameter}
 giving users an additional optimization task.
@@ -129,11 +129,11 @@ In the study presented here, a recent approach called Randomized Parameter
 Setting Strategy (RPSS) \cite{fuku1,fuku2} is applied to EvoSpace and tested on
 several benchmark problems, extending the work presented in \cite{garcia2014randomized}
 in which only trap functions were considered.
-The idea behind RPSS is that in a distributed EA, parametrization may be
-completely skipped for a successful search, with research showing that when the
+The idea behind RPSS is that, in a distributed EA, parametrization may be
+completely skipped, with research showing that when the
 number of distributed process is large enough, algorithm parameters can be set
 randomly and still achieve good overall results. However, work on RPSS has
-mostly been focused on the well-known Island Model for EAs, a distributed but synchronous system.
+mostly been focused on the well-known Island Model for EAs, a distributed but synchronous system. In this paper we will apply it to asynchronous systems implemented using a pool-based strategy.
 
 The remainder of the paper proceeds as follows.  Section \ref{sec:work}
 reviews related work. Afterwards, Section \ref{sec:evo} briefly describes the
@@ -150,7 +150,7 @@ distributed implementations \cite{cantu-paz:migration-policies,duda2013gpu}.
 For instance, Fern\'andez et al. \cite{nc} % articulo Paco, Gustavo y Leo publucado en Natural Computing}
 uses the well-known Berkeley Open Infrastructure for Network Computing (BOINC) to distribute EA runs across a
 heterogeneous network of volunteer computers using virtual machines. Another recent example is
-found in the FlexGP system developed by Sherry et al. \cite{sherry2012flex}. FlexGP is probably the first large scale GP system
+found in the FlexGP system developed by Sherry et al. \cite{FlexGP}. FlexGP is probably the first large scale GP system
 that runs on the cloud, using an Island model approach and implemented over Amazon EC2 with a
 socket-based client-server architecture.
 
