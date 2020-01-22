@@ -28,29 +28,30 @@
 \maketitle
 
 \begin{abstract}
-  Synchronous operation is not the most natural setup in distributed algorithms. In grid,
-cloud or volunteer setups nodes are heterogeneous, or simply are not
-available at the exact same time; this is a challenge for the researcher if
-their full performance is going to be actually leveraged. We are
-interested in evolutionary algorithms (EAs), which evolve a population
-of solutions using a mechanism inspired by biological evolution; in this field,
-several asynchronous Evolutionary Algorithms (EAs) that distribute the
-evolutionary process among heterogeneous nodes have
-been proposed recently. These algorithms share the population between
-distributed workers which execute the actual evolutionary
-process by taking samples of the population, and replacing them in the
-population pool by evolved individuals. The performance of these EAs
-depends in part on the selection of parameters for the EA running in
-each worker. In this paper we present a method inspired by a strategy
-proposed by Gong and Fukunaga for the
-Island-Model which statically assigns random parameter settings to
-each island without parameter tuning. Experiments were conducted in the
-cloud using 2, 6 and 12 virtual machine configurations, with
-both homogeneous and heterogeneous random settings using five
-test functions for real-valued optimization (Rastrigin, Griewank, De Jong, Schaffer
-and Ackley) and the OneMax binary problem. The results suggest that this approach can yield
-a performance which is competitive with instances of the
-algorithm using workers with parameters tuned specifically for
+  Synchronous operation is not the most natural setup in distributed
+algorithms. In grid, cloud or volunteer setups nodes are
+heterogeneous, or simply are not available at the exact same time;
+this is a challenge for the researcher if their full performance is
+going to be actually leveraged. We are interested in evolutionary
+algorithms (EAs), which evolve a population of solutions using a
+mechanism inspired by biological evolution; in this field, several
+asynchronous Evolutionary Algorithms (EAs) that distribute the
+evolutionary process among heterogeneous nodes have been proposed
+recently. These algorithms share the population between distributed
+workers which execute the actual evolutionary process by taking
+samples of the population, and replacing them in the population pool
+by evolved individuals. The performance of these EAs depends in part
+on the selection of parameters for the EA running in each worker. In
+this paper we present a method inspired by a strategy proposed by Gong
+and Fukunaga for the Island-Model which statically assigns random
+parameter settings to each island without parameter
+tuning. Experiments were conducted in the cloud using 2, 6 and 12
+virtual machine configurations, with both homogeneous and
+heterogeneous random settings using five test functions for
+real-valued optimization (Rastrigin, Griewank, De Jong, Schaffer and
+Ackley) and the OneMax binary problem. The results suggest that this
+approach can yield a performance which is competitive with instances
+of the algorithm using workers with parameters tuned specifically for
 the benchmark.
 \end{abstract}
 
@@ -63,17 +64,22 @@ the benchmark.
 \section{Introduction}
 
 %Why Parallel
-Biological evolution is an intrinsically parallel, distributed and asynchronous process, however,
-some of these features are not trivially included into standard EAs,  which are mostly coded as sequential
-and synchronous algorithms \cite{eiben}.  A large body of work exists in EA parallelization,
-using multiple CPU cores, multiple nodes and GPUs \cite{cantu2000efficient,hofmann2013performance}.
-However, distributed and asynchronous EAs have started to become common only recently,
-in an effort to exploit computing resources available everywhere from personal computers,
-smart phones and tablets, as well as massive data centers \cite{agajaj,FlexGP}.
-These resources are easily accessible through popular Internet technologies, such as cloud computing,
-peer-to-peer (P2P), and web environments. Moreover, these technologies are intended for the development
-of parallel, distributed and asynchronous systems, such that an EA developed on top of them could easily
-reap the benefits of these features.
+Biological evolution is an intrinsically parallel, distributed and
+asynchronous process; however, some of these features are not
+trivially included into standard EAs, which are mostly implemented as
+sequential and synchronous algorithms \cite{eiben}.  A large body of
+work exists in EA parallelization, using multiple CPU cores, multiple
+nodes and GPUs \cite{cantu2000efficient,hofmann2013performance}.
+However, distributed and asynchronous EAs have started to become
+common only recently, in an effort to exploit computing resources
+available everywhere from personal computers, smart phones and
+tablets, as well as massive data centers \cite{agajaj,FlexGP}.  These
+resources are easily accessible through popular Internet technologies,
+such as cloud computing, peer-to-peer (P2P), and web
+environments. Moreover, these technologies are intended for the
+development of parallel, distributed and asynchronous systems, such
+that an EA developed on top of them could easily reap the benefits of
+these features.
 
 %Pool Based
 In this work, we are interested in EAs that follow a
