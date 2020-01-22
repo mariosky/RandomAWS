@@ -32,27 +32,26 @@
 algorithms. In grid, cloud or volunteer setups nodes are
 heterogeneous, or simply are not available at the exact same time;
 this is a challenge for the researcher if their full performance is
-going to be actually leveraged. We are interested in evolutionary
-algorithms (EAs), which evolve a population of solutions using a
-mechanism inspired by biological evolution; in this field, several
-asynchronous Evolutionary Algorithms (EAs) that distribute the
-evolutionary process among heterogeneous nodes have been proposed
-recently. These algorithms share the population between distributed
+going to be actually leveraged. Recently, in the field of Evolutionary
+Algorithms (EAs), researchers have proposed several asynchronous 
+designs have that distribute the evolutionary process among 
+heterogeneous nodes. These algorithms share the population between distributed
 workers which execute the actual evolutionary process by taking
 samples of the population, and replacing them in the population pool
 by evolved individuals. The performance of these EAs depends in part
 on the selection of parameters for the EA running in each worker. In
-this paper we present a method inspired by a strategy proposed by Gong
-and Fukunaga for the Island-Model which statically assigns random
-parameter settings to each island without parameter
-tuning. Experiments were conducted in the cloud using 2, 6 and 12
+this paper we present a method inspired by Inspired by a work of 
+Gong and Fukunaga in which they proposed a strategy for 
+the Island-Model in which they assign random parameters to 
+each island without doing any parameter tuning. Experiments 
+were conducted in the AWS cloud using 2, 6 and 12
 virtual machine configurations, with both homogeneous and
 heterogeneous random settings using five test functions for
 real-valued optimization (Rastrigin, Griewank, De Jong, Schaffer and
-Ackley) and the OneMax binary problem. The results suggest that this
-approach can yield a performance which is competitive with instances
-of the algorithm using workers with parameters tuned specifically for
-the benchmark.
+Ackley) and the OneMax binary problem. The results suggest that
+this method can produce a performance that is competitive with 
+instances of the algorithm using workers with parameters 
+specially tuned for the benchmark.
 \end{abstract}
 
 
