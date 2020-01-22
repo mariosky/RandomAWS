@@ -143,9 +143,11 @@ Section \ref{sec:conclusions}.
 
 \section{Related Work}
 \label{sec:work}
-There are two important practical issues faced by many EA systems: the size of the parameter and the cost needed to explore a big search space.
-Concerning the latter, one approach to mitigate this issue is to use parallel or
-distributed implementations \cite{cantu-paz:migration-policies,duda2013gpu}.
+
+The number of parameters that need to be tuned and the computational cost of
+exploring an ample search space are two common issues faced by designers of
+EAs.  Regarding the computational cost, a common approach to mitigate the
+problem is to follow a parallel or a distributed design \cite{cantu-paz:migration-policies,duda2013gpu}.
 For instance, Fern\'andez et al. \cite{nc} 
 uses the well-known Berkeley Open Infrastructure for Network Computing (BOINC) to distribute EA runs across a
 heterogeneous network of volunteer computers using virtual machines. Another  example is
