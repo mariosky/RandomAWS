@@ -285,7 +285,7 @@ Each of these random parametrization are evaluated based on their average perfor
 independent runs for each problem.
 Hereafter, we refer to this method as the {\em homogeneous} configuration.
 Second, for RPSS the parametrizations
-are not tuned, they are randomly generated for each EvoWorker, set independently at the beginning of each run.
+are not tuned, every EvoWorker sets them independently and randomly at the beginning of each run.
 Hereafter, we call this approach the {\em heterogeneous} configuration. Finally, we perform 30 independent runs
 with both methods and report the average number of evaluations required by each strategy to find the
 global optimum solution.
@@ -405,8 +405,7 @@ but checking the cases when that happens is left as future work.
     {
         \includegraphics[width=3in]{img/griewank_evals_hetereo.png}
     }
-      \caption{ 30 runs on the Griewank function. Box-plot of the number of evaluations needed for solution,
-                 with an (a) Homogeneous configuration, and (b) Heterogeneous configuration.}
+      \caption{30 runs on the Griewank function. Box-plot of the evaluations used by (a) Homogeneous configuration, and (b) Heterogeneous configuration.}
     \label{fig:griewank-evals}
 \end{figure*}
 %
@@ -422,8 +421,7 @@ but checking the cases when that happens is left as future work.
     }
 
 
-    \caption{30 runs on the Schaffer function. Box-plot of the number of evaluations needed for
-      solution, with an (a) Homogeneous configuration, and (b) Heterogeneous configuration.}
+    \caption{30 runs on the Schaffer function. Box-plot of the number of evaluations needed to reach a solution, with an (a) Homogeneous configuration, and (b) Heterogeneous configuration.}
     \label{fig:schaffer}
 \end{figure*}
 %
@@ -475,8 +473,7 @@ for the Griewank function are shown. For 12 workers results are not as flat as b
 with times comparable to the 6 worker configuration in the best case.
 
 To compare the performance of the homogeneous approach and the heterogeneous approach based on RPSS,
-Figure \ref{fig:griewank-evals} compares the approaches based on the total number of function
-evaluations required to find the optimal solution (within a 7 figure accuracy).
+Figure \ref{fig:griewank-evals} compares the approaches with respect to the number of function evaluations required to find the optimal solution (within a 7 figure accuracy).
 These results show a clear performance improvement, with the heterogeneous configuration
 reducing the total number of function evaluations required to find a solution,
 independently of the number of workers used.
