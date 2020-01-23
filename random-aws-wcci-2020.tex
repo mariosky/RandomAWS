@@ -195,13 +195,25 @@ But using a pool is not the only way of leveraging cloud
 insfrastructure; using higher-level cloud tools like map-reduce is
 also a popular option. In this case, algorithms need to distribute the
 work in tasks, which will be placed on a global queue to which
-map-reduce algorithms are applied in parallel \cite{fazenda2012,di2013towards,FlexGP}. 
+map-reduce algorithms are applied in parallel \cite{fazenda2012,di2013towards,FlexGP}.
 
-While using a distributed framework can ease the computational cost, it can also exacerbate the first issue mentioned above;
-i.e., it increases the size of the algorithm parameter space, which makes parameter tuning a more difficult task.
-The issue of optimal parametrization of EAs has been  widely studied \cite{de2007parameter},
-with many approaches in literature. For instance, one of the most successful approaches
-is the F-Racing and iterative F-Racing techniques \cite{lopez2011irace}; these use optimization techniques to explore the parameter space; parameter setting can also be approached theoretically, at least in a class of optimization problems, as proved by Doerr et al. in \cite{doerr2020theory}. However, this implies that either you need to run a meta-algorithm in order to find an efficient parametrization, or try to look for a theoretical approach to the specific problem that is able to give you a good parametrization. 
+Cloud computing (and other distributed computing methodologies) lay at
+the hands of the researchers a good amount of computational power on
+demand, and one of the ways these resources might be used is to create
+an additional layer on the algorithm so that it optimizes the
+parameters needed to obtain solutionos efficiently. There are many
+approaches to optimal EA parametrization since the first papers;
+aproaches have been reviewed in \cite{de2007parameter}, for
+instance. However, with the popularity and afordability of computing
+power, meta-level approaches have been preferred: one of the most
+successful approaches is the F-Racing and iterative F-Racing
+techniques \cite{lopez2011irace}; these use optimization techniques to
+explore the parameter space; parameter setting can also be approached
+theoretically, at least in a class of optimization problems, as proved
+by Doerr et al. in \cite{doerr2020theory}. However, this implies that
+either you need to run a meta-algorithm in order to find an efficient
+parametrization, or try to look for a theoretical approach to the
+specific problem that is able to give you a good parametrization.
 
 In this paper, we will take a lateral approach to this problem,
 inspired by the approach proposed by Gong and Fukunaga called RPSS
