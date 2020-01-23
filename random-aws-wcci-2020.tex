@@ -86,7 +86,9 @@ repository or population pool. We highlight the fact that such
 systems are intrinsically asynchronous, parallel, and distributed.
 The particular PEA used in this paper is implemented on
 the EvoSpace framework \cite{GValdez2015}
-in which distributed nodes (or workers, which we call EvoWorkers) asynchronously take a sample of the population pool, apply some evolutionary search procedure 
+in which distributed nodes (or workers, which we call EvoWorkers) 
+asynchronously take a sample of the population pool, apply some 
+evolutionary search procedure 
 on it, and after several iterations, returns the sample containing 
 newly evolved solutions.
 % EA Paramaters
@@ -221,8 +223,8 @@ inspired by the approach proposed by Gong and Fukunaga called RPSS
 \cite{fuku1,fuku2}.  Originally proposed for an Island Model EA, RPSS
 sets the parameter values of each subpopulation randomly, without any
 kind of tuning or self-adaptive process. The RPSS approach consists in
-randcomly setting the parameters of each subpopulation when the island
-is started.  Such a simple strategy obtained very promising and
+randomly setting the parameters of each subpopulation when the island
+is started. Such a simple strategy obtained very promising and
 competitive results while substantially reducing the amount of effort
 required to tune the system.
 
@@ -398,19 +400,20 @@ As mentioned before, the first step is to simulate the manual tuning of the para
 by running 100 experiments with random parameters and then selecting the best configuration,
 using the median performance over 5 runs. Since the OneMax problem is solved by almost all
 configurations, performance is determined by the time required to find the optimal solution.
-%[FALTA ESPECIFICAR PORQUE SE USO EL TIEMPO AQUI, Y PORQUE EL NUMERO DE EVALUACIONES EN LOS OTROS EXPERIMENTOS]
 Figure~\ref{fig:effort} shows the time required for different numbers of EvoWorkers.
 It can be observed that even with an homogeneous configuration, as the number of workers
 increases solutions are found faster on average, but it is also true
 that it the median time needed to find the solution also decreases,
 with around 75\% of the experiments finding the solution in the same
 amount of time, around 5 seconds, as the bottom chart in the
-aforementioned Figure shows.  In general, the number of function
-evaluations increases with number of workers, also in every time
-unit. This implies that the selection of a good configuration could be
-found easier when using a higher number of workers, relative 
-to the total wall-clock time. % I don't understand this - JJ
-
+aforementioned Figure shows.  
+%In general, the number of function
+%evaluations increases with number of workers, also in every time
+%unit. This implies that the selection of a good configuration could be
+%found easier when using a higher number of workers, relative 
+%to the total wall-clock time. % I don't understand this - JJ
+% I think is not right, there is no relation between FEs and Easier Configuration 
+% I will put the paragraph as a comment 
 In Figure~\ref{fig:comp-onemax} the results of 30 runs comparing against the RPW approach is shown.
 It can be observed that as the number of EvoWorkers increases the median of the time decreases, but
 in this case the best of the heterogeneous solutions (12 workers) is only better than the worst homogeneous
@@ -537,8 +540,12 @@ of function evaluations for the case with 12 EvoWorkers.
 In the summary shown in Table ~\ref{fig:summary} two extreme cases are found, the Ackley and Rastrigin functions.
 In the former, the heterogeneous configuration achieves the best performance, while the opposite is true on the latter.
 Finally, performance on the De Jong function also favors the heterogeneous configurations.
-
+Although the heterogeneous configuration performed poorly with the Restigin
+function, especially when using two workers, the performance improved as we
+added more workers.  The increased performance was on both the mean number of
+evaluations and time to solution.
 % Maybe try to explain that? - JJ
+% Added a sentence about Rastrigin - Mario
 \section{Conclusions and Further Work}
 \label{sec:conclusions}
 
@@ -554,9 +561,8 @@ environment. This parameter tuning saves the need of computationally
 expensive meta-algorithms, while at the same time allowing to keep a
 high diversity level in throughout all subpopulations.
 Results also show that the benefits of a random parametrization
-strategy are not only present
-when using an heterogeneous approach, even a random homogeneous configuration could bring
-benefits.
+strategy are not only present when using an heterogeneous approach, 
+even a random homogeneous configuration could bring benefits.
 
 Unfortunately the RPW strategy is not a silver bullet, as there are cases
 when it might not find the solution using the minimun number of
@@ -605,7 +611,8 @@ on performance.
 
 \section*{Acknowledgements}
 
-This paper has been supported in part by project DeepBio (TIN2017-85727-C4-2-P).
+This paper has been supported in part by projects DeepBio (TIN2017-85727-C4-2-P)
+and TecNM-5654.19-P.
 % This should be updated
 
 
