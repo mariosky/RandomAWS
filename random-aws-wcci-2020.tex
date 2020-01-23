@@ -261,9 +261,22 @@ parts, which are also shown in Figure
   whose origin and destination always is the EvoSpace Pool.
 \end{itemize}
 
-In a basic EvoSpace configuration, EvoWorkers request a small random sample of the
-population, using it as the initial seed for a local EA executed
-on the clients, containers or cloud instances; this EA returns the result to the pool. The experimental platform used in this work is
+In a basic EvoSpace configuration, a certain number of EvoWorkers request a small random sample of the
+population, the size of this sample is specified by the {\em Population Size} parameter (see Table \ref{tab:params}).
+Using this sample as the initial seed for a local EA executed
+on the clients, containers or cloud instances;  In this case, we implemented the 
+local EA of each worker using the DEAP Python
+library \cite{fortin2012deap} using the following parameters: For OneMac, two-point crossover,
+tournament selection, tournament size=4, and bit-flip mutation.  We used
+Gaussian mutation for continuous functions with mu=0 and sigma=0.5 and the
+initial random values in the [-5,5] range. The number of generations and 
+the number of times an EvoWorker takes a sample depend on the problem size,
+these parameters are also reported in Table \ref{tab:params}. After the 
+local EA finishes, EvoWorkers return the evolved population back to the pool. 
+
+
+
+this EA returns the result to the pool. The experimental platform used in this work is
 described in \cite{valenzuela2015implementing}, and consists of several virtual machines
 created automatically by a script before each experiment.
 
