@@ -27,8 +27,8 @@
 
 \maketitle
 \begin{abstract}
-  Synchronous operation is not the most natural setup in distributed
-algorithms. In grid, cloud or volunteer setups nodes are
+  Synchronous operation is not the most natural setup to run distributed
+algorithms. In many grid, cloud or volunteer setups nodes are
 heterogeneous, or simply are not available at the exact same time;
 this is a challenge for the researcher if their full performance is
 going to be actually leveraged. Recently, in the field of Evolutionary
@@ -134,8 +134,10 @@ The objective of RPSS is that, in a distributed EA, parametrization
 can be skipped entirely,With research showing that when the number of islands
 is large enough, the algorithm parameters of each island can be randomly
 set and still achieving good results overall. However, most of the work on 
-RPSS has been in the well-known Island Model for EAs, 
-a distributed but synchronous system. In this paper we will apply 
+RPSS has been in the well-known Island Model for EAs
+\cite{ALBA2001451}, which uses different strategies for distribution
+and migration of populations, and is also, in many cases, synchronous.
+In this paper we will apply 
 it to asynchronous EAs implemented using a pool-based strategy.
 
 The paper organization is as follows. In Section \ref{sec:work} we
@@ -149,7 +151,7 @@ Section \ref{sec:conclusions}.
 
 The number of parameters that need to be tuned and the computational cost of
 exploring an ample search space are two common issues faced by designers of
-EAs.  Regarding the computational cost, a common approach to mitigate the
+EAs. Regarding the computational cost, a common approach to mitigate the
 problem is to follow a parallel or a distributed design \cite{cantu-paz:migration-policies,duda2013gpu}.
 For instance, Fern\'andez et al. \cite{nc} 
 uses the well-known Berkeley Open Infrastructure for Network Computing (BOINC) to distribute EA runs across a
@@ -176,15 +178,18 @@ The issue of optimal parametrization of EAs has been  widely studied \cite{de200
 with many approaches in literature. For instance, one of the most successful approaches
 is the F-Racing and iterative F-Racing techniques \cite{lopez2011irace}; these use optimization techniques to explore the parameter space; parameter setting can also be approached theoretically, at least in a class of optimization problems, as proved by Doerr et al. in \cite{doerr2020theory}. However, this implies that either you need to run a meta-algorithm in order to find an efficient parametrization, or try to look for a theoretical approach to the specific problem that is able to give you a good parametrization. 
 
-In this paper, we will take a lateral approach to this problem, inspired by the approach proposed by Gong and Fukunaga
-called RPSS \cite{fuku1,fuku2}.
-Originally proposed for an Island Model EA, RPSS sets the parameter values of each subpopulation randomly,
-without any kind of tuning or self-adaptive process. The RPSS approach is to set the parameters
-of each subpopulation randomly at the beginning of the run, a very simple strategy.
-Even so, results reported in \cite{fuku1,fuku2} exhibit promise, achieving competitive results
-while substantially reducing the amount of effort required to tune the system.
+In this paper, we will take a lateral approach to this problem,
+inspired by the approach proposed by Gong and Fukunaga called RPSS
+\cite{fuku1,fuku2}.  Originally proposed for an Island Model EA, RPSS
+sets the parameter values of each subpopulation randomly, without any
+kind of tuning or self-adaptive process. The RPSS approach is to set
+the parameters of each subpopulation randomly at the beginning of the
+run, a very simple strategy.  Even so, results reported in
+\cite{fuku1,fuku2} exhibit promise, achieving competitive results
+while substantially reducing the amount of effort required to tune the
+system.
 
-In a first study, \cite{LNCS86720702} reported that in effect RPSS
+In a first study \cite{LNCS86720702}, we proved that in effect RPSS
 can be successfully applied to a PEA. However, in that work the
 approach was only tested on the P-Peaks generator of multi-modal problems proposed by De Jong et al. \cite{Jong:PS97}.
 While the problem is theoretically interesting, it can be limited in scope given its reliance on a bit string representation.
