@@ -329,7 +329,7 @@ real-world problems is that experimental results may be only applicable to
 problems similar to OneMax, where genetic operators are well suited for the
 search in a solution space without deceptiveness or very large landscapes.
 For the current experiments a 128 bit string was used. Since this
-problem is not computationally demanding, more experiments where conducted for the tuning phase,
+problem is not computationally demanding, more experiments were conducted for the tuning phase,
 tuning the parameters using 2, 6, and 12 EvoWorkers. Then, following \cite{fuku1},
 five standard real-valued single objective optimization problems were
 tested: these are the Rastrigin, Griewank, De Jong, Schaffer  and
@@ -361,10 +361,11 @@ increases solutions are found faster on average, but it is also true
 that it the median time needed to find the solution also decreases,
 with around 75\% of the experiments finding the solution in the same
 amount of time, around 5 seconds, as the bottom chart in the
-aforementioned Figure shows.  In general, increasing the number of workers increases
-the number of function evaluations carried out over a unit of time. This implies that the selection
-of a good configuration could be found easier when using a higher number of workers, relative
-to the total wall-clock time.
+aforementioned Figure shows.  In general, the number of function
+evaluations increases with number of workers, also in every time
+unit. This implies that the selection of a good configuration could be
+found easier when using a higher number of workers, relative 
+to the total wall-clock time. % I don't understand this - JJ
 
 In Figure~\ref{fig:comp-onemax} the results of 30 runs comparing against the RPW approach is shown.
 It can be observed that as the number of EvoWorkers increases the median of the time decreases, but
@@ -503,15 +504,20 @@ without any form of parameter tuning, achieving comparable results to standard h
 parametrizations that were tuned for each problem.
 Results also show that the benefits of a RPSS are not only present
 when using an heterogeneous approach, even a random homogeneous configuration could bring
-benefits. Unfortunately the RPW strategy is not a silver bullet, as there are cases
-when it is not the best approach. However these disadvantages are
+benefits.
+
+Unfortunately the RPW strategy is not a silver bullet, as there are cases
+when it might not find the solution using the minimun number of
+evaluations; and even when it does, it needs marginally more time to
+reach it. However these disadvantages are
 offset by the fact that it comes very close to zero parameter tuning,
 giving a consistently good result across a good range of problem instances.
 The worst result is achieved for the Rastrigin function, which
 is one of the most difficult ones; not only the time needed is worse,
 also the number of evaluations. In case such as these it would be
 interesting to use some technique to constrain the range of variation
-of the random parameters.
+of the random parameters or to investigate additional operators that
+would work better across a wide range of situations.
 
 The work presented in this paper, thus, gives further proof to our
 previous evaluation of randomly parametrized workers, inspired
@@ -522,9 +528,28 @@ of algorithm or how population or work is distributed. In general, we
 can conclude that 
 random parametrization will allow a good initial result for most
 problems, providing a fast solution in cases where there is not enough
-time to perform optimization of the parameters in a parallel setup.
+time to perform optimization of the parameters in a parallel
+setup. Besides, it also lowers the amount of ``islands'' (in our case
+workers) needed for a randomized parameter setting strategy to work:
+while in the case of Fukunaga et al. a large number of islands was
+needed, in our case just a few of them, or even only two, are
+enough.
 
-This work also open new avenues of research in the future. We are randomizing every worker separately, but every one has a static parametrization. In principle, it would be possible also to change this parametrization after several generations, which might have a positive effect in diversity and search space exploration. The range of variation of the parameters is static, but it could also be varied adaptively, so that as evolution progresses, exploitation is used more heavily than exploration. Finally, other operators such as BLX-$\alpha$ could be added to the mix, which might have a good effect on performance.
+This work also opens new avenues of research in the future. We are
+randomizing every worker separately, but every one has a static
+parametrization. In principle, it would be possible also to change
+this parametrization after several generations, which might have a
+positive effect in diversity and search space exploration. The range
+of variation of the parameters is static, but it could also be varied
+adaptively, so that as evolution progresses, exploitation is used more
+heavily than exploration. Incrementing the amount of EvoWorkers might
+have an interesting effect from the point of view of efficiency in
+difficult problems such as the Schaffer function, so that will be
+another possible line of future work.
+Finally, other operators such as
+BLX-$\alpha$ could be added to the mix, which might have a good effect
+on performance.
+
 
 \section*{Acknowledgements}
 
