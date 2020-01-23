@@ -39,10 +39,8 @@ workers which execute the actual evolutionary process by taking
 samples of the population, and replacing them in the population pool
 by evolved individuals. The performance of these EAs depends in part
 on the selection of parameters for the EA running in each worker. In
-this paper we present a method inspired by a work of 
-Gong and Fukunaga in which they proposed a strategy for 
-the Island-Model in which they assign random parameters to 
-each island without doing any parameter tuning. Experiments 
+this paper we study how varying randomly pararameters in distributed
+evolutionary algorithms affect performance. Experiments 
 were conducted in the AWS cloud using 2, 6 and 12
 virtual machine configurations, with both homogeneous and
 heterogeneous random settings using five test functions for
@@ -62,8 +60,9 @@ specially tuned for the benchmark.
 \section{Introduction}
 
 %Why Parallel
-Biological evolution is a process with intrinsical properties that we can find
-in some computational systems, that are asynchronous, parallel, and distributed;
+Biological evolution is a process with some interesting properties,
+with which we can design computational systems, that are asynchronous,
+parallel, and distributed;
 however, it is not trivial to include some of these characteristics in standard
 EAs, and many remain as sequential and synchronous algorithms \cite{eiben}.
 A large body of work exists about the parallelization EAs, using multi-core, 
@@ -122,9 +121,14 @@ Having multiple EAs running in parallel with different parameters could be
 equivalent to performing a dynamic adaptation, having some workers exploring
 and others exploiting at the same time.
 % Evaluate in EvoSpace
-In the study presented here, a method called Randomized Parameter
-Setting Strategy (RPSS) \cite{fuku1,fuku2} is applied to EvoSpace and tested on
-several benchmark problems, extending the work presented in \cite{garcia2014randomized}
+In \cite{LNCS86720702} we introduced for the first time a method
+inspired by the Randomized Parameter
+Setting Strategy (RPSS) \cite{fuku1,fuku2}; in subsequent papers
+\cite{hernandez2017randomized} we compared it with a dynamic
+adaptation strategies, but applied to particle swarm optimization
+algorithms.
+In this paper, we apply it to EvoSpace and test on
+several benchmark problems, extending the work presented in \cite{LNCS86720702}
 in which only trap functions were considered.
 The objective of RPSS is that, in a distributed EA, parametrization 
 can be skipped entirely,With research showing that when the number of islands
@@ -180,7 +184,7 @@ of each subpopulation randomly at the beginning of the run, a very simple strate
 Even so, results reported in \cite{fuku1,fuku2} exhibit promise, achieving competitive results
 while substantially reducing the amount of effort required to tune the system.
 
-In a first study, \cite{garcia2014randomized} reported that in effect RPSS
+In a first study, \cite{LNCS86720702} reported that in effect RPSS
 can be successfully applied to a PEA. However, in that work the
 approach was only tested on the P-Peaks generator of multi-modal problems proposed by De Jong et al. \cite{Jong:PS97}.
 While the problem is theoretically interesting, it can be limited in scope given its reliance on a bit string representation.
@@ -255,7 +259,7 @@ Local Generations & 30 & 30 & 30 & 100 & 100 & 100\\
 %
 The goal of this work is to determine if a random static parametrization for each of the $n$ EvoWorkers
 collaborating on a given run could achieve competitive results against an homogeneous tuned parametrization
-\cite{fuku1,fuku2,garcia2014randomized}. The parameters considered to be randomly set for each EvoWorker
+\cite{fuku1,fuku2,LNCS86720702}. The parameters considered to be randomly set for each EvoWorker
 where the crossover and mutation probabilities with a valid range of $[0,1]$. These parameters where
 selected because they effectively control which types of moves in the search space are
 applied, and are related to the amount of exploration and exploitation
@@ -267,13 +271,10 @@ a two point crossover and a tournament selection of size 3. For the real-valued 
 mutation was applied with mu=$0$, sigma=$0.2$, and indpb=$0.05$; two point crossover and
 a tournament selection of three. These values are kept static to measure only the effect of the
 parameters mentioned above.
-    % Why do these parameters don't change?
-    % Explained - Mario
-
 
 
 To measure the effectiveness of RPSS in EvoSpace two parametrization strategies are compared,
-similar to what is done in \cite{fuku1,fuku2,garcia2014randomized}. First, we consider the approach of setting all
+similar to what is done in \cite{fuku1,fuku2,LNCS86720702}. First, we consider the approach of setting all
 of the EvoWorker parameters homogeneously. In order to tune the homogeneous parameters,
 we select the best configuration from 100 random parametrizations.
 Each of these random parametrization are evaluated based on their average performance over 10
