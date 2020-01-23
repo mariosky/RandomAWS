@@ -152,28 +152,50 @@ Section \ref{sec:conclusions}.
 \section{Related Work}
 \label{sec:work}
 
-The number of parameters that need to be tuned and the computational cost of
-exploring an ample search space are two common issues faced by designers of
-EAs. Regarding the computational cost, a common approach to mitigate the
-problem is to follow a parallel or a distributed design \cite{cantu-paz:migration-policies,duda2013gpu}.
-For instance, Fern\'andez et al. \cite{nc} 
-uses the well-known Berkeley Open Infrastructure for Network Computing (BOINC) to distribute EA runs across a
-heterogeneous network of volunteer computers using virtual machines. Another  example is
-found in the FlexGP system developed by Sherry et al. \cite{FlexGP}. FlexGP is probably the first large scale GP system
-that runs on the cloud, using an Island model approach and implemented over Amazon EC2 with a
-socket-based client-server architecture. Even recently, this client-server architecture has been used profitably by researchers such as Salza and Ferrucci \cite{SALZA2019276} for speeding up evolutionary algorithms in a cloud infrastructure. Lately, implementations tend to use Docker containers instead of virtual machines \cite{Dziurzanski2020}.
+The number of parameters that need to be tuned and the computational
+cost of exploring an ample search space are two common issues faced by
+designers of EAs. Regarding the computational cost, a common approach
+to mitigate the problem is to follow a parallel or a distributed
+design \cite{cantu-paz:migration-policies,duda2013gpu} which lately,
+and increasingly, use the cloud. Cloud services were already
+used in 2011 by García Arenas et al in
+\cite{DBLP:conf/gecco/ArenasGCLRM11}, but cloud computing was to the
+best of our knowledge pioneered by  the FlexGP. This system
+distributes population in islands hosted in Amazon EC2 instances;
+these islands communicate via sockets, but the general architecture
+is client-server; even recently, this client-server architecture has been
+used profitably by researchers such as Salza and Ferrucci
+\cite{SALZA2019276} for speeding up evolutionary algorithms in a cloud
+infrastructure. Lately, implementations tend to use Docker containers
+instead of virtual machines \cite{Dziurzanski2020}. Work on this kind
+of architectures was inspired by early research using the BOINC and
+other volunteer computing platforms; very early papers lie the one by
+Smaoui et al. \cite{FekiNG09} farms out fitness evaluation to
+volunteers, with work units including several evaluations and
+individuals replicated in different units to guarantee evaluation.
 
-Distributed evolutionary algorithms using client-server implementations are a good match for fixed infrastructure, such as clusters, supercomputers or simply multi-core architectures, and they continue to be researched actively \cite{Liu201954}, but another approach to distributed EAs is the so called pool-based architecture \cite{sofea:naco}. In general, a
-pool-based system employs a central repository where (maybe a part of) the evolving population is stored.
-Distributed clients interact with the pool, performing some or all of the basic EA processes
-(selection, genetic operators, survival). An initial work implementing this approach (and without calling it by tha name)
-is that by Merelo et al. \cite{agajaj} implementing a JavaScript based PEA that distributes
-the evolutionary process over the web, providing the added advantage of not requiring the
-installation of additional software in each computing node; a similar approach which uses a blockchain-like data store called FluidInfo \cite{radcliffe2012getting} was also proposed by the same authors in \cite{DBLP:conf/cec/Merelo10}.  Other similar cloud-based solutions
-are based on a global queue of tasks and a Map-Reduce implementation which normally handles failures
-by the re-submission of  tasks \cite{fazenda2012,di2013towards,FlexGP}. This work was initiated by distributing tasks using the BOINC
-volunteer platform;  Smaoui et al. \cite{FekiNG09} uses work units that consist of a fitness
-evaluation task and multiple replicas  were produced and sent to different clients.
+Distributed evolutionary algorithms using client-server
+implementations are a good match for fixed, or even ephemeral (if
+mechanism to avoid missing evaluations are added) infrastructure, such as
+clusters, supercomputers or simply multi-core architectures, and they
+continue to be researched actively \cite{Liu201954}, but another
+approach to distributed EAs is the so called pool-based architecture
+\cite{sofea:naco}. The name comes after a {\em pool} or repository of
+solutions, which are decoupled from the algorithms used to evolve
+them. Clients do not interact among themselves, and they take initial
+solution or solutions from that pool, depositing the result of the
+evolution in the same place. An initial application of this concept to
+evolutionary algorithm was proposed by one of the authors in
+\cite{agajaj} and used JavaScript running in the browser; a similar
+approach which uses a blockchain-like data store called FluidInfo
+\cite{radcliffe2012getting} was also proposed by the same authors in
+\cite{DBLP:conf/cec/Merelo10}.
+
+But using a pool is not the only way of leveraging cloud
+insfrastructure; using higher-level cloud tools like map-reduce is
+also a popular option. In this case, algorithms need to distribute the
+work in tasks, which will be placed on a global queue to which
+map-reduce algorithms are applied in parallel \cite{fazenda2012,di2013towards,FlexGP}. 
 
 While using a distributed framework can ease the computational cost, it can also exacerbate the first issue mentioned above;
 i.e., it increases the size of the algorithm parameter space, which makes parameter tuning a more difficult task.
