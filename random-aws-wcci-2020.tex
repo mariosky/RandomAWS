@@ -509,21 +509,13 @@ interesting to use some technique to constrain the range of variation
 of the random parameters.
 
 The work presented in this paper, thus, extends the work by Fukunaga
-and coworkers by confirming his result in a pool-based environment and
+and coworkers and also our previous work by confirming  results in a pool-based environment and
 different kinds of fitness functions. In general, we can conclude that
 random parametrization will allow a good initial result for most
 problems, providing a fast solution in cases where there is not enough
 time to perform optimization of the parameters in a parallel setup.
 
-% Future lines of work will focus on using other EA or meta-heuristic techniques,
-% such as genetic programming or particle swarm optimization for having
-% workers that are heterogeneous in more than one sense. RPSS could be
-% used in those cases where each algorithm has different sets of
-% parameters, but also to randomly select the technique used in each
-% node. Another interesting line of work is the dynamic adaptation of
-% parameters by measuring the diversity of each worker or returned
-% sample. This could be specially useful in cases where the random
-% parametrization technique seems to achieve bad results.
+This work also open new avenues of research in the future. We are randomizing every worker separately, but every one has a static parametrization. In principle, it would be possible also to change this parametrization after several generations, which might have a positive effect in diversity and search space exploration. The range of variation of the parameters is static, but it could also be varied adaptively, so that as evolution progresses, exploitation is used more heavily than exploration. Finally, other operators such as BLX-$\alpha$ could be added to the mix, which might have a good effect on performance.
 
 \section*{Acknowledgements}
 
