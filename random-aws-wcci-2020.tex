@@ -262,10 +262,10 @@ Local Generations & 30 & 30 & 30 & 100 & 100 & 100\\
 \end{tabular}
 \end{table}
 %
-The goal of this work is to determine if a random static parametrization for each of the $n$ EvoWorkers
+The goal of this work is to provide more proof that a random static parametrization for each of the $n$ EvoWorkers
 collaborating on a given run could achieve competitive results against an homogeneous tuned parametrization
 \cite{fuku1,fuku2,LNCS86720702}. The parameters considered to be randomly set for each EvoWorker
-where the crossover and mutation probabilities with a valid range of $[0,1]$. These parameters where
+were the crossover and mutation probabilities, with a valid range of $[0,1]$. These parameters were
 selected because they effectively control which types of moves in the search space are
 applied, and are related to the amount of exploration and exploitation
 that is carried out. % \cite{}. Don't know if we need this - JJ
@@ -277,8 +277,7 @@ mutation was applied with mu=$0$, sigma=$0.2$, and indpb=$0.05$; two point cross
 a tournament selection of three. These values are kept static to measure only the effect of the
 parameters mentioned above.
 
-
-To measure the effectiveness of RPSS in EvoSpace two parametrization strategies are compared,
+We are going to measure the effectiveness of RPSS in EvoSpace two parametrization strategies are compared,
 similar to what is done in \cite{fuku1,fuku2,LNCS86720702}. First, we consider the approach of setting all
 of the EvoWorker parameters homogeneously. In order to tune the homogeneous parameters,
 we select the best configuration from 100 random parametrizations.
