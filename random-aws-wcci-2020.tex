@@ -310,21 +310,22 @@ global optimum solution.
   %
 The algorithms are first evaluated using the OneMax (or BitCounting) problem proposed by
 Schaffer and Eshelman \cite{SE91}, this is a simple problem consisting in maximizing the number
-of ones of a bitstring. Although the OneMax problem may not justify the use of a distributed
+of ones of a bitstring. Although the OneMax problem, by itself, may not justify the use of a distributed
 implementation, i.e. we can argue that it can be solved in a very short time by using a
-single desktop computer, but on the other hand, it offers several advantages as a
+single desktop computer, it offers several advantages as a
 benchmark for new architectures. It is a well-known problem with several
 studies on parameters,  runtime analyses \cite{DBLP:journals/corr/MereloGVB15},
 and distributed implementation
-issues. On the other hand, the drawback of using a benchmark that is not representative of
+issues; and of course its difficulty will depend on the problem size. On the other hand, the drawback of using a benchmark that is not representative of
 real-world problems is that experimental results may be only applicable to
 problems similar to OneMax, where genetic operators are well suited for the
-search in a solution space without deceptive or very large landscapes.
+search in a solution space without deceptiveness or very large landscapes.
 For the current experiments a 128 bit string was used. Since this
 problem is not computationally demanding, more experiments where conducted for the tuning phase,
 tuning the parameters using 2, 6, and 12 EvoWorkers. Then, following \cite{fuku1},
-five standard real-valued single objective optimization problems
-are used, these are the Rastrigin, Griewank, De Jong, Schaffer  and Ackley functions,
+five standard real-valued single objective optimization problems were
+tested: these are the Rastrigin, Griewank, De Jong, Schaffer  and
+Ackley functions,
 with the number of dimensions set to 100 in each case. For these problems we use a real-valued vector
 representation for each individual.
 
