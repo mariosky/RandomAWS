@@ -158,7 +158,7 @@ designers of EAs. Regarding the computational cost, a common approach
 to mitigate the problem is to follow a parallel or a distributed
 design \cite{cantu-paz:migration-policies,duda2013gpu} which lately,
 and increasingly, use the cloud \cite{10.1007/978-3-319-45823-6_8}. Cloud services were already
-used in 2011 by García Arenas et al in
+used in 2011 by Garc\'ia Arenas et al in
 \cite{DBLP:conf/gecco/ArenasGCLRM11}, but cloud computing was to the
 best of our knowledge pioneered by  the FlexGP. This system
 distributes population in islands hosted in Amazon EC2 instances;
@@ -220,14 +220,14 @@ In this paper, we will take a lateral approach to this problem,
 inspired by the approach proposed by Gong and Fukunaga called RPSS
 \cite{fuku1,fuku2}.  Originally proposed for an Island Model EA, RPSS
 sets the parameter values of each subpopulation randomly, without any
-kind of tuning or self-adaptive process. The RPSS approach is to set
-the parameters of each subpopulation randomly at the beginning of the
-run, a very simple strategy.  Even so, results reported in
-\cite{fuku1,fuku2} exhibit promise, achieving competitive results
-while substantially reducing the amount of effort required to tune the
-system.
+kind of tuning or self-adaptive process. The RPSS approach consists in
+randcomly setting the parameters of each subpopulation when the island
+is started.  Such a simple strategy obtained very promising and
+competitive results while substantially reducing the amount of effort
+required to tune the system.
 
-In a first study \cite{LNCS86720702}, we proved that in effect our
+Our take on this method and its application to other kind of
+distributed evoltuionary algorithms was published in \cite{LNCS86720702}, where we proved that in effect our
 implementation of RPSS, RPW, 
 can be successfully applied to a PEA. However, in that work the
 approach was only tested on the P-Peaks generator of multi-modal problems proposed by De Jong et al. \cite{Jong:PS97}.
@@ -248,16 +248,24 @@ spaces and different forms of fitness landscapes.
 \label{sec:evo}
 
 The EvoSpace framework, which was introduced in \cite{Evospace}, and
-since then used in several applications \cite{GValdez2015} has two components: (i) the EvoSpace
-container that stores the evolving population; and (ii) workers, which execute
-the actual evolutionary process, while the EvoSpace container acts only as a population repository.
-In a basic configuration, workers pull a small random sample of the
-population, and use it as the initial population for a local EA executed
-on the client machine. Afterward, the evolved population from each worker
-is returned to the EvoSpace container. The experimental platform used in this work is
+since then used in several applications
+\cite{GValdez2015,garcia2017evospace}  is functionally divided in two
+parts, which are also shown in Figure
+\ref{fig:evospace}:\begin{itemize}
+\item The EvoSpace {\em pool}, with the evolving population and is
+  decoupled from,
+\item the workers, which we call EvoWorkers, and are the ones actually
+  performing the evolutionary process transiently on the population,
+  whose origin and destination always is the EvoSpace Pool.
+\end{itemize}
+
+In a basic EvoSpace configuration, EvoWorkers request a small random sample of the
+population, using it as the initial seed for a local EA executed
+on the clients, containers or cloud instances; this EA returns the result to the pool. The experimental platform used in this work is
 described in \cite{valenzuela2015implementing}, and consists of several virtual machines
-created automatically by a script before each experiment. The main components are depicted
-in Figure \ref{fig:evospace}. Each experiment consists of the following steps:
+created automatically by a script before each experiment.
+
+Each experiment consists of the following steps:
 
 \begin{enumerate}
     \item First, the script creates two virtual machines: one for the task queue and another
@@ -534,11 +542,19 @@ Finally, performance on the De Jong function also favors the heterogeneous confi
 \section{Conclusions and Further Work}
 \label{sec:conclusions}
 
-The main objective of this paper was to prove the efficiency of randomized pool-based evolutionary algorithms in a wide range of benchmarks, from a simple OneMax Problem to more complicated, and common, floating-point benchmars, which are also evaluated in a wide range of problem sizes.
-Using the RPW approach, it seems that a PEA can be executed successfully
-without any form of parameter tuning, achieving comparable results to standard homogeneous
-parametrizations that were tuned for each problem.
-Results also show that the benefits of a RPSS are not only present
+The main objective of this paper was to prove the efficiency of
+randomized pool-based evolutionary algorithms in a wide range of
+benchmarks, from a simple OneMax Problem to more complicated, and
+common, floating-point benchmarks, which are also evaluated in a wide
+range of problem sizes, and results prove that this RPW approach is
+able to find solutions in a competitive number of evaluations, and
+without using significantly more resources than fixed-parameter
+workers, something which is quite important in a cloud
+environment. This parameter tuning saves the need of computationally
+expensive meta-algorithms, while at the same time allowing to keep a
+high diversity level in throughout all subpopulations.
+Results also show that the benefits of a random parametrization
+strategy are not only present
 when using an heterogeneous approach, even a random homogeneous configuration could bring
 benefits.
 
