@@ -86,9 +86,8 @@ repository or population pool. We highlight the fact that such
 systems are intrinsically asynchronous, parallel, and distributed.
 The particular PEA used in this paper is implemented on
 the EvoSpace framework \cite{GValdez2015}
-in which distributed nodes (or workers) asynchronously take a
-sample of the population pool,  perform a local evolutionary search 
-on it, and after several iterations, returns the sample contining 
+in which distributed nodes (or workers, which we call EvoWorkers) asynchronously take a sample of the population pool, apply some evolutionary search procedure 
+on it, and after several iterations, returns the sample containing 
 newly evolved solutions.
 % EA Paramaters
 Like any other EA, the performance of the complete search procedure will depend
@@ -126,14 +125,17 @@ inspired by the Randomized Parameter
 Setting Strategy (RPSS) \cite{fuku1,fuku2}; in subsequent papers
 \cite{hernandez2017randomized} we compared it with a dynamic
 adaptation strategies, but applied to particle swarm optimization
-algorithms.
+algorithms; in general, the results were promising, but it still lacked more extensive tests.
 In this paper, we apply it to EvoSpace and test on
 several benchmark problems, extending the work presented in \cite{LNCS86720702}
-in which only trap functions were considered.
-The objective of RPSS is that, in a distributed EA, parametrization 
-can be skipped entirely,With research showing that when the number of islands
-is large enough, the algorithm parameters of each island can be randomly
-set and still achieving good results overall. However, most of the work on 
+in which only trap functions were considered; we will call this
+approach Randomly Parametrized Workers or RPW. The objective of RPW is
+to reduce the number of parameters used in an evolutionary algorithm,
+or even totally eliminate it. This objective is supported by research
+showing that when the number of islands 
+is large enough, the algorithm parameters of every island can be randomly
+set and still achieving good results overall \cite{fuku2}. 
+However, most of the work on 
 RPSS has been in the well-known Island Model for EAs
 \cite{ALBA2001451}, which uses different strategies for distribution
 and migration of populations, and is also, in many cases, synchronous.
@@ -487,9 +489,8 @@ Finally, performance on the De Jong function also favors the heterogeneous confi
 % Maybe try to explain that? - JJ
 \section{Conclusions and Further Work}
 \label{sec:conclusions}
-This paper presents an evaluation of the RPSS parametrization approach on
-a pool-based EA, using the OneMax problem and five real-valued optimization functions
-in high dimensional space.
+
+The main objective of this paper was to prove the efficiency of randomized pool-based evolutionary algorithms in a wide range of benchmarks, from a simple OneMax Problem to more complicated, and common, floating-point benchmars, which are also evaluated in a wide range of problem sizes.
 Using the RPSS approach, it seems that a PEA can be executed successfully
 without any form of parameter tuning, achieving comparable results to standard homogeneous
 parametrizations that were tuned for each problem.
