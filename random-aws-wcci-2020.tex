@@ -38,7 +38,7 @@ workers which execute the actual evolutionary process by taking
 samples of the population, and replacing them in the population pool
 by evolved individuals. The performance of these EAs depends in part
 on the selection of parameters for the EA running in each worker. In
-this paper we study how varying randomly pararameters in distributed
+this paper we study how varying randomly parameters in distributed
 evolutionary algorithms affect performance. Experiments 
 were conducted in the AWS cloud using 2, 6 and 12
 virtual machine configurations, with both homogeneous and
@@ -70,7 +70,7 @@ a common practice, intending to exploit computing resources available everywhere
 from personal computers, smartphones, and tablets, as well as data 
 centers \cite{agajaj,FlexGP}. 
 
-Access to these resources can be easily achived through popular Internet 
+Access to these resources can be easily achieved through popular Internet 
 technologies, such as cloud computing, peer-to-peer (P2P), and web environments. 
 Moreover, these technologies are intended for the
 development of parallel, distributed and asynchronous systems, such
@@ -192,7 +192,7 @@ approach which uses a blockchain-like data store called FluidInfo
 \cite{DBLP:conf/cec/Merelo10}.
 
 But using a pool is not the only way of leveraging cloud
-insfrastructure; using higher-level cloud tools like map-reduce is
+infrastructure; using higher-level cloud tools like map-reduce is
 also a popular option. In this case, algorithms need to distribute the
 work in tasks, which will be placed on a global queue to which
 map-reduce algorithms are applied in parallel \cite{fazenda2012,di2013towards,FlexGP}.
@@ -201,11 +201,11 @@ Cloud computing (and other distributed computing methodologies) lay at
 the hands of the researchers a good amount of computational power on
 demand, and one of the ways these resources might be used is to create
 an additional layer on the algorithm so that it optimizes the
-parameters needed to obtain solutionos efficiently. There are many
+parameters needed to obtain solutions efficiently. There are many
 approaches to optimal EA parametrization since the first papers;
-aproaches were initially reviewed in \cite{de2007parameter}, with more
+approaches were initially reviewed in \cite{de2007parameter}, with more
 recent reviews published by Karafotias et al. \cite{6747993} and Aleti
-and Moser \cite{Aleti2016}. However, with the popularity and afordability of computing
+and Moser \cite{Aleti2016}. However, with the popularity and affordability of computing
 power, meta-level approaches have been preferred: one of the most
 successful approaches is the F-Racing and iterative F-Racing
 techniques \cite{lopez2011irace}; these use optimization techniques to
@@ -227,7 +227,7 @@ competitive results while substantially reducing the amount of effort
 required to tune the system.
 
 Our take on this method and its application to other kind of
-distributed evoltuionary algorithms was published in \cite{LNCS86720702}, where we proved that in effect our
+distributed evolutionary algorithms was published in \cite{LNCS86720702}, where we proved that in effect our
 implementation of RPSS, RPW, 
 can be successfully applied to a PEA. However, in that work the
 approach was only tested on the P-Peaks generator of multi-modal problems proposed by De Jong et al. \cite{Jong:PS97}.
@@ -264,7 +264,7 @@ population, the size of this sample is specified by the {\em Population Size} pa
 Using this sample as the initial seed for a local EA executed
 on the clients, containers or cloud instances;  In this case, we implemented the 
 local EA of each worker using the DEAP Python
-library \cite{fortin2012deap} using the following parameters: For OneMac, two-point crossover,
+library \cite{fortin2012deap} using the following parameters: For OneMax, two-point crossover,
 tournament selection, tournament size=4, and bit-flip mutation.  We used
 Gaussian mutation for continuous functions with mu=0 and sigma=0.5 and the
 initial random values in the [-5,5] range. The number of generations and 
@@ -432,7 +432,7 @@ solution. In this case, the heterogeneous/random configuration
 presented in this paper does not obtain better results than the
 homogeneous configuration using the best parameters found by random
 search. This problem, which is deceptively simple, actually depends
-more on the exploitative part than the explorative part. The
+more on the exploitative part than the exploratory part. The
 heterogeneous worker solution, however, seems to lean more on
 exploration by keeping high diversity, something that might not be
 actually needed during the last phases of the OneMax problem. This
@@ -452,7 +452,7 @@ but checking the cases when that happens is left as future work.
         \includegraphics[width=3in]{img/12w_griewank_100_box.png}
     }
 
-    \caption{100 experiments with random parameters for the 100 dimensions Griewank
+    \caption{100 experiments with random parameters for the 100 dimensions Griewangk
     real-valued optimization test function. Experiments are ranked by
     the mean time to solution of 5 runs, with (a) 6 workers, and (b) 12 workers.}
     \label{fig:griewank}
@@ -517,7 +517,7 @@ but checking the cases when that happens is left as future work.
 
                                 & Mean evaluations & 156795.276 & 213783.345 & 330531.828 & 159259.655 & 281918.034 & 651978.345 \\
       \hline
-      \multirow{2}{*}{Griewank} & Mean time & 8.27241379 & 5.5337931 & 5.30482759 & 7.645667 & 5.716667 & 5.617333 \\
+      \multirow{2}{*}{Griewangk} & Mean time & 8.27241379 & 5.5337931 & 5.30482759 & 7.645667 & 5.716667 & 5.617333 \\
       \cline{2-8}
 
                                 & Mean evaluations & 23688.8966 & 37118.1034 & 59249.2759 & 25779.6 & 42953.33 & 70536.53 \\
@@ -537,7 +537,7 @@ optimization problems of this section.  For brevity only two representative func
 presented with figures, and summary of all the results are shown in Figure~\ref{fig:summary}. As before
 the first step is to tune the parameters for the homogeneous configuration.
 In Figure \ref{fig:griewank}, the results of the tuning phase for 6 and 12 workers
-for the Griewank function are shown. For 12 workers results are not as flat as before,
+for the Griewangk function are shown. For 12 workers results are not as flat as before,
 with times comparable to the 6 worker configuration in the best case.
 
 To compare the performance of the homogeneous approach and the heterogeneous approach based on RPW,
@@ -551,7 +551,7 @@ of function evaluations for the case with 12 EvoWorkers.
 In the summary shown in Table ~\ref{fig:summary} two extreme cases are found, the Ackley and Rastrigin functions.
 In the former, the heterogeneous configuration achieves the best performance, while the opposite is true on the latter.
 Finally, performance on the De Jong function also favors the heterogeneous configurations.
-Although the heterogeneous configuration performed poorly with the Restigin
+Although the heterogeneous configuration performed poorly with the Rastrigin
 function, especially when using two workers, the performance improved as we
 added more workers.  The increased performance was on both the mean number of
 evaluations and time to solution.
@@ -576,7 +576,7 @@ strategy are not only present when using an heterogeneous approach,
 even a random homogeneous configuration could bring benefits.
 
 Unfortunately the RPW strategy is not a silver bullet, as there are cases
-when it might not find the solution using the minimun number of
+when it might not find the solution using the minimum number of
 evaluations; and even when it does, it needs marginally more time to
 reach it. However these disadvantages are
 offset by the fact that it comes very close to zero parameter tuning,
