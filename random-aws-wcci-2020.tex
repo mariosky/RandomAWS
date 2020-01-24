@@ -44,8 +44,7 @@ evolutionary algorithms affect performance. Experiments
 were conducted in the AWS cloud using 2, 6 and 12
 virtual machine configurations, with both homogeneous and
 heterogeneous random settings using five test functions for
-real-valued optimization (Rastrigin, Griewank, De Jong, Schaffer and
-Ackley) and the OneMax binary problem. The results suggest that
+real-valued optimization and the OneMax binary problem. The results suggest that
 this method can produce a performance that is competitive with 
 instances of the algorithm using workers with parameters 
 specially tuned for the benchmark.
@@ -239,12 +238,12 @@ five high-dimensional real-valued optimization benchmarks. Our goal is
 to test how general is this approach by considering different search
 spaces and different forms of fitness landscapes.
 
-\begin{figure*}[h!tbp]
+\begin{figure}[h!tbp]
     \centering
-        \includegraphics[width=10cm]{img/EvoSpaceAWS.png}
+        \includegraphics[width=9cm]{img/EvoSpaceAWS.png}
     \caption{Figure showing the elements of the cloud implementation of EvoSpace, and what are the relationships between them. The right-most component holds the {\em pool} from which EvoWorkers (in the middle) extract elements to evaluate, and where results are put back.}
     \label{fig:evospace}
-  \end{figure*}
+  \end{figure}
 %
 \section{EvoSpace Cloud Implementation}
 \label{sec:evo}
@@ -470,7 +469,7 @@ but checking the cases when that happens is left as future work.
     {
         \includegraphics[width=3in]{img/griewank_evals_hetereo.png}
     }
-      \caption{30 runs on the Griewank function. Box-plot of the
+      \caption{Box-plot of the
         evaluations used by (a) Homogeneous configuration, and (b)
         Heterogeneous configuration. Please note that $y$ scales are different.}
     \label{fig:griewank-evals}
@@ -488,7 +487,7 @@ but checking the cases when that happens is left as future work.
     }
 
 
-    \caption{30 runs on the Schaffer function. Box-plot of the number
+    \caption{Box-plot of the number
       of evaluations needed to reach a solution, with an (a)
       Homogeneous configuration, and (b) Heterogeneous
       configuration. Please note that $y$ scales are different.}
