@@ -32,14 +32,14 @@ heterogeneous, or simply are not available at the exact same time;
 this is a challenge for the researcher if their full performance is
 going to be actually leveraged. Recently, in the field of Evolutionary
 Algorithms (EAs), researchers have proposed several asynchronous 
-designs have that distribute the evolutionary process among 
+designs that distribute the evolutionary process among 
 heterogeneous nodes. These algorithms share the population between distributed
 workers which execute the actual evolutionary process by taking
 samples of the population, and replacing them in the population pool
 by evolved individuals. The performance of these EAs depends in part
 on the selection of parameters for the EA running in each worker. In
-this paper we study how varying randomly parameters in distributed
-evolutionary algorithms affect performance. Experiments 
+this paper we study how randomly  varying parameters in distributed
+evolutionary algorithms affects performance. Experiments 
 were conducted in the AWS cloud using 2, 6 and 12
 virtual machine configurations, with both homogeneous and
 heterogeneous random settings using five test functions for
@@ -169,7 +169,7 @@ used profitably by researchers such as Salza and Ferrucci
 infrastructure. Lately, implementations tend to use Docker containers
 instead of virtual machines \cite{Dziurzanski2020}. Work on this kind
 of architectures was inspired by early research using the BOINC and
-other volunteer computing platforms; very early papers lie the one by
+other volunteer computing platforms; very early papers like the one by
 Smaoui et al. \cite{FekiNG09} farms out fitness evaluation to
 volunteers, with work units including several evaluations and
 individuals replicated in different units to guarantee evaluation.
@@ -250,14 +250,10 @@ spaces and different forms of fitness landscapes.
 The EvoSpace framework, which was introduced in \cite{Evospace}, and
 since then used in several applications
 \cite{GValdez2015,garcia2017evospace}  is functionally divided in two
-parts, which are also shown in Figure
-\ref{fig:evospace}:\begin{itemize}
-\item The EvoSpace {\em pool}, with the evolving population and is
-  decoupled from,
-\item the workers, which we call EvoWorkers, and are the ones actually
-  performing the evolutionary process transiently on the population,
+parts, which are also shown in figure \ref{fig:evospace}, the EvoSpace {\em pool}, 
+with the evolving population that is decoupled from the workers, which we call EvoWorkers,
+ and are the ones actually performing the evolutionary process transiently on the population,
   whose origin and destination always is the EvoSpace Pool.
-\end{itemize}
 
 In a basic EvoSpace configuration, a certain number of EvoWorkers request a small random sample of the
 population, the size of this sample is specified by the {\em Population Size} parameter (see Table \ref{tab:params}).
@@ -272,10 +268,8 @@ the number of times an EvoWorker takes a sample depend on the problem size,
 these parameters are also reported in Table \ref{tab:params}. After the 
 local EA finishes, EvoWorkers return the evolved population back to the pool. 
 
-
-
-this EA returns the result to the pool. The experimental platform used in this work is
-described in \cite{valenzuela2015implementing}, and consists of several virtual machines
+The experimental platform used in this work is
+described in \cite{valenzuela2015implementing}, and consists of different virtual machines
 created automatically by a script before each experiment.
 
 Each experiment consists of the following steps:
@@ -414,7 +408,7 @@ configurations, performance is determined by the time required to find the optim
 Figure~\ref{fig:effort} shows the time required for different numbers of EvoWorkers.
 It can be observed that even with an homogeneous configuration, as the number of workers
 increases solutions are found faster on average, but it is also true
-that it the median time needed to find the solution also decreases,
+that the median time needed to find the solution also decreases,
 with around 75\% of the experiments finding the solution in the same
 amount of time, around 5 seconds, as the bottom chart in the
 aforementioned Figure shows.  
@@ -534,7 +528,7 @@ but checking the cases when that happens is left as future work.
 
 The same steps as the previous section were followed when evaluating the five real valued
 optimization problems of this section.  For brevity only two representative functions are
-presented with figures, and summary of all the results are shown in Figure~\ref{fig:summary}. As before
+presented with figures, and summary of all the results are shown in Table~\ref{fig:summary}. As before
 the first step is to tune the parameters for the homogeneous configuration.
 In Figure \ref{fig:griewank}, the results of the tuning phase for 6 and 12 workers
 for the Griewangk function are shown. For 12 workers results are not as flat as before,
@@ -590,7 +584,7 @@ would work better across a wide range of situations.
 
 The work presented in this paper, thus, gives further proof to our
 previous evaluation of randomly parametrized workers, inspired
-initially by the work of Fukunaga et al; it also shows that the random
+initially by the work of Fukunaga et al. \cite{fuku1}; it also shows that the random
 parametrization is a technique that, by itself, is efficient in
 multi-population nature-inspired algorithms, independently of the type
 of algorithm or how population or work is distributed. In general, we
@@ -600,7 +594,7 @@ problems, providing a fast solution in cases where there is not enough
 time to perform optimization of the parameters in a parallel
 setup. Besides, it also lowers the amount of ``islands'' (in our case
 workers) needed for a randomized parameter setting strategy to work:
-while in the case of Fukunaga et al. a large number of islands was
+while in the case of Fukunaga et al. \cite{fuku1} a large number of islands was
 needed, in our case just a few of them, or even only two, are
 enough.
 
