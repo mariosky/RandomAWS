@@ -26,27 +26,28 @@
 
 \maketitle
 \begin{abstract}
-  Synchronous operation is not the most natural setup to run distributed
-algorithms. In many grid, cloud or volunteer setups nodes are
-heterogeneous, or simply are not available at the exact same time;
+  Synchronous operation is not the most natural, as in biologically
+  inspired, mode to run
+distributed algorithms. In many grid, cloud or volunteer setups nodes
+are heterogeneous, or simply are not available at the exact same time;
 this is a challenge for the researcher if their full performance is
 going to be actually leveraged. Recently, in the field of Evolutionary
-Algorithms (EAs), researchers have proposed several asynchronous 
-designs that distribute the evolutionary process among 
-heterogeneous nodes. These algorithms share the population between distributed
+Algorithms (EAs), researchers have proposed several asynchronous
+designs that distribute the evolutionary process among heterogeneous
+nodes. These algorithms share the population between distributed
 workers which execute the actual evolutionary process by taking
 samples of the population, and replacing them in the population pool
 by evolved individuals. The performance of these EAs depends in part
 on the selection of parameters for the EA running in each worker. In
-this paper we study how randomly  varying parameters in distributed
-evolutionary algorithms affects performance. Experiments 
-were conducted in the AWS cloud using 2, 6 and 12
-virtual machine configurations, with both homogeneous and
-heterogeneous random settings using five test functions for
-real-valued optimization and the OneMax binary problem. The results suggest that
-this method can produce a performance that is competitive with 
-instances of the algorithm using workers with parameters 
-specially tuned for the benchmark.
+this paper we study how randomly varying parameters in distributed
+evolutionary algorithms affects performance. Experiments were
+conducted in the AWS cloud using 2, 6 and 12 virtual machine
+configurations, with both homogeneous and heterogeneous random
+settings using five test functions for real-valued optimization and
+the OneMax binary problem. The results suggest that this method can
+produce a performance that is competitive with instances of the
+algorithm using workers with parameters specially tuned for the
+benchmark.
 \end{abstract}
 
 
