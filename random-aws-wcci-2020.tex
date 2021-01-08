@@ -220,8 +220,8 @@ In this paper, we will take a lateral approach to this problem,
 inspired by the approach proposed by Gong and Fukunaga called RPSS
 \cite{fuku1,fuku2}.  Originally proposed for an Island Model EA, RPSS
 sets the parameter values of each subpopulation randomly, without any
-kind of tuning or self-adaptive process. The RPSS approach consists in
-randomly setting the parameters of each subpopulation when the island
+kind of tuning or self-adaptive process; parameters of each
+subpopulation are set when the island
 is started. Such a simple strategy obtained very promising and
 competitive results while substantially reducing the amount of effort
 required to tune the system.
@@ -409,7 +409,12 @@ representation for each individual.
 As mentioned before, the first step is to simulate the manual tuning of the parameters
 by running 100 experiments with random parameters and then selecting the best configuration,
 using the median performance over 5 runs. Since the OneMax problem is solved by almost all
-configurations, performance is determined by the time required to find the optimal solution.
+configurations, performance is determined by the time required to find
+the optimal solution. Please note that this tuning is used as a
+baseline for setting parameters in the homogeneous configuration, and
+is not really a part of the RPW algorithm. % Please mario check that
+% this is correct - JJ
+
 Figure~\ref{fig:effort} shows the time required for different numbers of EvoWorkers.
 It can be observed that even with an homogeneous configuration, as the number of workers
 increases, solutions are found faster on average; you can see how the
@@ -418,7 +423,7 @@ worker increases; the median time needed to find the solution also decreases,
 with around 75\% of the experiments finding the solution in the same
 amount of time, around 5 seconds, as the bottom chart in the
 aforementioned Figure shows. However, the maximum time needed to find
-a solution is also increased; please note than the chart for 12
+a solution is also greater than the base configuration; please note than the chart for 12
 workers expands the $y$ axis up to 50 seconds.
 %In general, the number of function
 %evaluations increases with number of workers, also in every time
@@ -427,6 +432,7 @@ workers expands the $y$ axis up to 50 seconds.
 %to the total wall-clock time. % I don't understand this - JJ
 % I think is not right, there is no relation between FEs and Easier Configuration 
 % I will put the paragraph as a comment 
+
 In Figure~\ref{fig:comp-onemax} the results of 30 runs comparing against the RPW approach is shown.
 It can be observed that as the number of EvoWorkers increases the median of the time decreases, but
 in this case the best of the heterogeneous solutions (12 workers) is only better than the worst homogeneous
