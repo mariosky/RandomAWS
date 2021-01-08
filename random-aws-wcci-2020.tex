@@ -9,6 +9,7 @@
 \usepackage{xcolor}
 \usepackage{subfigure}
 \usepackage{multirow}
+\usepackage{hyperref}
 
 \begin{document}
 
@@ -142,12 +143,12 @@ and migration of populations, and is also, in many cases, synchronous.
 In this paper we will apply 
 it to asynchronous EAs implemented using a pool-based strategy.
 
-The rest of paper is organized as follows: In Section \ref{sec:work} we
-present the state of the art; afterwards, Section \ref{sec:evo} describes the
+The rest of paper is organized as follows: In \autoref{sec:work} we
+present the state of the art; afterwards, \autoref{sec:evo} describes the
 EvoSpace cloud implementation that has been used in this work. The
 experimental work is next in 
-Section \ref{sec:experiments}. Finally, we give summary and concluding remarks in
-Section \ref{sec:conclusions}.
+\autoref{sec:experiments}. Finally, we give summary and concluding remarks in
+\autoref{sec:conclusions}.
 
 \section{Related Work}
 \label{sec:work}
@@ -404,7 +405,8 @@ representation for each individual.
     \label{fig:comp-onemax}
   \end{figure}
 %
-\subsection{Results for OneMax}
+  \subsection{Results for OneMax}
+  \label{ss:onemax}
 
 As mentioned before, the first step is to simulate the manual tuning of the parameters
 by running 100 experiments with random parameters and then selecting the best configuration,
@@ -412,12 +414,12 @@ using the median performance over 5 runs. Since the OneMax problem is solved by 
 configurations, performance is determined by the time required to find
 the optimal solution. Please note that this tuning is used as a
 baseline for setting parameters in the homogeneous configuration, and
-is not really a part of the RPW algorithm. % Please mario check that
+is not really a part of the RPW algorithm. % Please Mario check that
 % this is correct - JJ
 
 Figure~\ref{fig:effort} shows the time required for different numbers of EvoWorkers.
 It can be observed that even with an homogeneous configuration, as the number of workers
-increases, solutions are found faster on average; you can see how the
+increases, solutions are found faster on average, which is only to be expected; you can see how the
 curve slope starts to increase farther to the right as the number of
 worker increases; the median time needed to find the solution also decreases,
 with around 75\% of the experiments finding the solution in the same
@@ -433,7 +435,7 @@ workers expands the $y$ axis up to 50 seconds.
 % I think is not right, there is no relation between FEs and Easier Configuration 
 % I will put the paragraph as a comment 
 
-In Figure~\ref{fig:comp-onemax} the results of 30 runs comparing against the RPW approach is shown.
+In \autoref{fig:comp-onemax} the results of 30 runs comparing against the RPW approach is shown.
 It can be observed that as the number of EvoWorkers increases the median of the time decreases, but
 in this case the best of the heterogeneous solutions (12 workers) is only better than the worst homogeneous
 solution. In this case, the heterogeneous/random configuration
@@ -478,7 +480,7 @@ but checking the cases when that happens is left as future work.
         \includegraphics[width=3in]{img/griewank_evals_hetereo.png}
     }
       \caption{Box-plot of the
-        evaluations used by (a) Homogeneous configuration, and (b)
+        evaluations used for the Griewank function by (a) Homogeneous configuration, and (b)
         Heterogeneous configuration. Please note that $y$ scales are different.}
     \label{fig:griewank-evals}
 \end{figure*}
@@ -496,7 +498,7 @@ but checking the cases when that happens is left as future work.
 
 
     \caption{Box-plot of the number
-      of evaluations needed to reach a solution, with an (a)
+      of evaluations needed to reach a solution for the Schaffer function, with an (a)
       Homogeneous configuration, and (b) Heterogeneous
       configuration. Please note that $y$ scales are different.}
     \label{fig:schaffer}
@@ -543,11 +545,15 @@ but checking the cases when that happens is left as future work.
 
 The same steps as the previous section were followed when evaluating the five real valued
 optimization problems of this section.  For brevity only two representative functions are
-presented with figures, and summary of all the results are shown in Table~\ref{fig:summary}. As before
-the first step is to tune the parameters for the homogeneous configuration.
-In Figure \ref{fig:griewank}, the results of the tuning phase for 6 and 12 workers
+presented with figures, and summary of all the results are shown in
+\autoref{fig:summary}. As we have done in \autoref{ss:onemax},
+the first step is to tune the parameters for the homogeneous
+configuration, which, once again, is done for the purposes of
+establishing baseline values with which an heterogeneour configuration
+can compare.
+In \autoref{fig:griewank}, the results of the tuning phase for 6 and 12 workers
 for the Griewank function are shown. For 12 workers results are not as flat as before,
-with times comparable to the 6 worker configuration in the best case.
+with times comparable to the 6-worker configuration in the best case.
 
 To compare the performance of the homogeneous approach and the heterogeneous approach based on RPW,
 Figure \ref{fig:griewank-evals} compares the approaches with respect to the number of function evaluations required to find the optimal solution (within a 7 figure accuracy).
@@ -598,7 +604,14 @@ when it might not find the solution using the minimum number of
 evaluations; and even when it does, it needs marginally more time to
 reach it. However these disadvantages are
 offset by the fact that it comes very close to zero parameter tuning,
-giving a consistently good result across a good range of problem instances.
+giving a consistently good result across a good range of problem
+instances. Tuning is still needed for population-level parameters such
+as population size, the RPW-specific sample-size, as well as other
+parameters related to them; however, parameters for evolutionary
+operators have been totally eliminated, making it easier to use for
+non-experienced researchers or as part of evolutionary algorithm
+frameworks.
+
 The worst result is achieved for the Rastrigin function, which
 is one of the most difficult ones; not only the time needed is worse,
 also the number of evaluations. In case such as these it would be
