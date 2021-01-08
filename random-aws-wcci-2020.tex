@@ -227,15 +227,20 @@ competitive results while substantially reducing the amount of effort
 required to tune the system.
 
 Our take on this method and its application to other kind of
-distributed evolutionary algorithms was published in \cite{LNCS86720702}, where we proved that in effect our
-implementation of RPSS, RPW, 
-can be successfully applied to a PEA. However, in that work the
-approach was only tested on the P-Peaks generator of multi-modal problems proposed by De Jong et al. \cite{Jong:PS97}.
-While the problem is theoretically interesting, it can be limited in scope given its reliance on a bit string representation.
-Therefore, this work extends the study considering another binary representation problem (OneMax) as well as
-five high-dimensional real-valued optimization benchmarks. Our goal is
-to test how general is this approach by considering different search
-spaces and different forms of fitness landscapes.
+distributed evolutionary algorithms was published in
+\cite{LNCS86720702}, where we proved that in effect our implementation
+of RPSS, RPW, can be successfully applied to a PEA. However, in that
+work the approach was only tested on the P-Peaks generator of
+multi-modal problems proposed by De Jong et al. \cite{Jong:PS97}.
+While the problem is theoretically interesting, it can be limited in
+scope given its reliance on a bit string representation. Therefore,
+this work extends the study considering another binary representation
+problem (OneMax) as well as five high-dimensional real-valued
+optimization benchmarks. Our goal is to test how general is this
+approach by considering different search spaces and different forms of
+fitness landscapes, which is why we have used these functions, quite
+popular for benchmarking, and which will allow us to design the setup
+that can later be used in real-world functions.
 
 \begin{figure}[h!tbp]
     \centering
@@ -289,8 +294,6 @@ Each experiment consists of the following steps:
 
 This setup was deployed on top of the Amazon Web Services (AWS)
 platform which allowed the execution of the experiments with similar computing resources.
-% Architecture Components
-% Random Patameters
 
 \section{Experiments}
  \label{sec:experiments}
@@ -323,7 +326,7 @@ collaborating on a given run could achieve competitive results against an homoge
 were the crossover and mutation probabilities, with a valid range of $[0,1]$. These parameters were
 selected because they effectively control which types of moves in the search space are
 applied, and are related to the amount of exploration and exploitation
-that is carried out. % \cite{}. Don't know if we need this - JJ
+that is carried out.
 The other parameters and design choices used by EvoSpace and the EvoWorkers in our experiments are given in
 Table \ref{tab:params}. Additionally, for the binary OneMax problem bit-flip mutation
 is used with an independent probability for each attribute to be flipped (indpb) of $0.05$,
@@ -447,7 +450,7 @@ but checking the cases when that happens is left as future work.
         \includegraphics[width=3in]{img/12w_griewank_100_box.png}
     }
 
-    \caption{100 experiments with random parameters for the 100 dimensions Griewangk
+    \caption{100 experiments with random parameters for the 100 dimensions Griewank
     real-valued optimization test function. Experiments are ranked by
     the mean time to solution of 5 runs, with (a) 6 workers, and (b) 12 workers.}
     \label{fig:griewank}
@@ -512,7 +515,7 @@ but checking the cases when that happens is left as future work.
 
                                 & Mean evaluations & 156795.276 & 213783.345 & 330531.828 & 159259.655 & 281918.034 & 651978.345 \\
       \hline
-      \multirow{2}{*}{Griewangk} & Mean time & 8.27241379 & 5.5337931 & {\bf 5.30482759} & 7.645667 & 5.716667 & 5.617333 \\
+      \multirow{2}{*}{Griewank} & Mean time & 8.27241379 & 5.5337931 & {\bf 5.30482759} & 7.645667 & 5.716667 & 5.617333 \\
 
 
                                 & Mean evaluations & 23688.8966 & 37118.1034 & 59249.2759 & 25779.6 & 42953.33 & 70536.53 \\
@@ -532,7 +535,7 @@ optimization problems of this section.  For brevity only two representative func
 presented with figures, and summary of all the results are shown in Table~\ref{fig:summary}. As before
 the first step is to tune the parameters for the homogeneous configuration.
 In Figure \ref{fig:griewank}, the results of the tuning phase for 6 and 12 workers
-for the Griewangk function are shown. For 12 workers results are not as flat as before,
+for the Griewank function are shown. For 12 workers results are not as flat as before,
 with times comparable to the 6 worker configuration in the best case.
 
 To compare the performance of the homogeneous approach and the heterogeneous approach based on RPW,
