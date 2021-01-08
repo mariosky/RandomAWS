@@ -366,8 +366,8 @@ global optimum solution.
     }
 
     \caption{100 experiments with random parameters for the 128 Bit OneMax problem.
-    Experiments are ranked in increasing order by the average time to solution in 5 runs, with
-    (a) 2 workers, (b) 6 workers, and (c) 12 workers.}
+    Experiments are ranked in increasing average time to solution
+    order for 5 runs, with (a) 2 workers, (b) 6 workers, and (c) 12 workers.}
     \label{fig:effort}
   \end{figure*}
   %
@@ -411,11 +411,14 @@ using the median performance over 5 runs. Since the OneMax problem is solved by 
 configurations, performance is determined by the time required to find the optimal solution.
 Figure~\ref{fig:effort} shows the time required for different numbers of EvoWorkers.
 It can be observed that even with an homogeneous configuration, as the number of workers
-increases solutions are found faster on average, but it is also true
-that the median time needed to find the solution also decreases,
+increases, solutions are found faster on average; you can see how the
+curve slope starts to increase farther to the right as the number of
+worker increases; the median time needed to find the solution also decreases,
 with around 75\% of the experiments finding the solution in the same
 amount of time, around 5 seconds, as the bottom chart in the
-aforementioned Figure shows.  
+aforementioned Figure shows. However, the maximum time needed to find
+a solution is also increased; please note than the chart for 12
+workers expands the $y$ axis up to 50 seconds.
 %In general, the number of function
 %evaluations increases with number of workers, also in every time
 %unit. This implies that the selection of a good configuration could be
