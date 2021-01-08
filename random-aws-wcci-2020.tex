@@ -31,10 +31,9 @@
 distributed algorithms. In many grid, cloud or volunteer setups nodes
 are heterogeneous, or simply are not available at the exact same time;
 this is a challenge for the researcher if their full performance is
-going to be actually leveraged. Recently, in the field of Evolutionary
-Algorithms (EAs), researchers have proposed several asynchronous
-designs that distribute the evolutionary process among heterogeneous
-nodes. These algorithms share the population between distributed
+going to be actually leveraged. Asynchronous distributed evolutionary
+algorithms try to solve this by dropping the homogeneity, as well as
+the synchronizity, assumption. These algorithms share the population between distributed
 workers which execute the actual evolutionary process by taking
 samples of the population, and replacing them in the population pool
 by evolved individuals. The performance of these EAs depends in part
