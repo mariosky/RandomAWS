@@ -9,3 +9,4 @@ img/converted*
 *.fdb_latexmk
 *.fls
 *.gz
+*.out
