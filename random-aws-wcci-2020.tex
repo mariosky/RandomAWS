@@ -272,7 +272,7 @@ Gaussian mutation for continuous functions with mu=0 and sigma=0.5 and the
 initial random values in the [-5,5] range. The number of generations and 
 the number of times an EvoWorker takes a sample depend on the problem size,
 these parameters are also reported in Table \ref{tab:params}. After the 
-local EA finishes, EvoWorkers return the evolved population back to the pool. 
+local EA finishes, EvoWorkers return the evolved population back to the pool.
 
 The experimental platform used in this work is
 described in \cite{valenzuela2015implementing}, and consists of different virtual machines
@@ -558,8 +558,8 @@ Although the heterogeneous configuration performed poorly with the Rastrigin
 function, especially when using two workers, the performance improved as we
 added more workers.  The increased performance was on both the mean number of
 evaluations and time to solution.
-% Maybe try to explain that? - JJ
-% Added a sentence about Rastrigin - Mario
+
+
 \section{Conclusions and Further Work}
 \label{sec:conclusions}
 
@@ -568,15 +568,24 @@ randomized pool-based evolutionary algorithms in a wide range of
 benchmarks, from a simple OneMax Problem to more complicated, and
 common, floating-point benchmarks, which are also evaluated in a wide
 range of problem sizes, and results prove that this RPW approach is
-able to find solutions in a competitive number of evaluations, and
-without using significantly more resources than fixed-parameter
-workers, something which is quite important in a cloud
-environment. This parameter tuning saves the need of computationally
-expensive meta-algorithms, while at the same time allowing to keep a
-high diversity level in throughout all subpopulations.
-Results also show that the benefits of a random parametrization
-strategy are not only present when using an heterogeneous approach, 
-even a random homogeneous configuration could bring benefits.
+able to find solutions in a competitive number of evaluations without
+using significantly more resources than fixed-parameter workers,
+something which is quite important in a cloud environment. By {\em
+competitive} we mean that it is in the same ballpark as other tuned by
+hand; however, our objective in this paper was to make the life of the
+researcher easier by reducing the number of parameters that need to be
+tuned. Since experimental design is measured on researcher's, not
+computer's time, it is much more valuable and, anyways, the
+experiments needed to find the best parameters take, themselves,
+computer time which, in a cloud environment, is also worth money. So,
+even if performance of this RPW algorithm is almost always better than
+that in a fine-tuned, homogeneous, algorithm, this saves the need of
+computationally expensive meta-algorithms, while at the same time
+allowing to keep a high diversity level in throughout all
+subpopulations.  Results also show that the benefits of a random
+parametrization strategy are not only present when using an
+heterogeneous approach, even a random homogeneous configuration could
+bring benefits.
 
 Unfortunately the RPW strategy is not a silver bullet, as there are cases
 when it might not find the solution using the minimum number of
