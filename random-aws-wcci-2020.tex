@@ -248,12 +248,13 @@ spaces and different forms of fitness landscapes.
 \label{sec:evo}
 
 The EvoSpace framework, which was introduced in \cite{Evospace}, and
-since then used in several applications
-\cite{GValdez2015,garcia2017evospace}  is functionally divided in two
-parts, which are also shown in figure \ref{fig:evospace}, the EvoSpace {\em pool}, 
-with the evolving population that is decoupled from the workers, which we call EvoWorkers,
- and are the ones actually performing the evolutionary process transiently on the population,
-  whose origin and destination always is the EvoSpace Pool.
+since then used in different applications
+\cite{GValdez2015,garcia2017evospace}, is functionally divided in two
+parts, which are also shown in figure \ref{fig:evospace}, the EvoSpace
+{\em pool}, with the evolving population that is decoupled from the
+workers, which we call EvoWorkers, and are the ones actually
+performing the evolutionary process transiently on the population,
+whose origin and destination always is the EvoSpace Pool.
 
 In a basic EvoSpace configuration, a certain number of EvoWorkers request a small random sample of the
 population, the size of this sample is specified by the {\em Population Size} parameter (see Table \ref{tab:params}).
