@@ -53,7 +53,7 @@ benchmark.
 
 \begin{IEEEkeywords}
   Distributed Evolutionary Algorithms, Volunteer Computing,
-  Cloud Computing, pool-based evolutionary algorithms, parameter optimization. 
+  Cloud Computing, pool-based evolutionary algorithms, parameter optimization.
 \end{IEEEkeywords}
 
 \section{Introduction}
@@ -79,13 +79,14 @@ that an EA developed on top of them could easily reap the benefits of
 these features.
 
 %Pool Based
-The focus of this work is on Pool-based EAs or PEAs, in which the search
+The focus of this work is on Pool-based EAs or PEAs. This is a type of
+bioinspired algorithm in which the search
 is distributed to many processes that collaborate using a shared
-repository or population pool. We highlight the fact that such
+repository or population {\em pool} (hence the name). We highlight the fact that such
 systems are intrinsically asynchronous, parallel, and distributed.
 The particular PEA used in this paper is implemented on
-the EvoSpace framework \cite{GValdez2015}
-in which distributed nodes (or workers, which we call EvoWorkers) 
+the EvoSpace framework \cite{GValdez2015} which uses a series of
+(possibly distributed) nodes (or workers, which we call EvoWorkers) 
 asynchronously take a sample of the population pool, apply some 
 evolutionary search procedure 
 on it, and after several iterations, returns the sample containing 
