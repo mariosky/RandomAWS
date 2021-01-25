@@ -155,14 +155,14 @@ experimental work is next in
 \label{sec:work}
 
 The number of parameters that need to be tuned and the computational
-cost of exploring an ample search space are two common issues faced by
+cost of exploring an wide search space are two common issues faced by
 designers of EAs. Regarding the computational cost, a common approach
 to mitigate the problem is to follow a parallel or a distributed
 design \cite{cantu-paz:migration-policies,duda2013gpu} which lately,
-and increasingly, use the cloud \cite{10.1007/978-3-319-45823-6_8}. Cloud services were already
+and increasingly, uses the cloud \cite{10.1007/978-3-319-45823-6_8}. Cloud services were already
 used in 2011 by Garc\'ia Arenas et al in
 \cite{DBLP:conf/gecco/ArenasGCLRM11}, but cloud computing was to the
-best of our knowledge pioneered by  the FlexGP. This system
+best of our knowledge pioneered by the FlexGP system, which
 distributes population in islands hosted in Amazon EC2 instances;
 these islands communicate via sockets, but the general architecture
 is client-server; even recently, this client-server architecture has been
@@ -194,7 +194,7 @@ approach which uses a blockchain-like data store called FluidInfo
 \cite{DBLP:conf/cec/Merelo10}.
 
 But using a pool is not the only way of leveraging cloud
-infrastructure; using higher-level cloud tools like map-reduce is
+infrastructure for hyper-parameter optimizations; using higher-level cloud tools like map-reduce is
 also a popular option. In this case, algorithms need to distribute the
 work in tasks, which will be placed on a global queue to which
 map-reduce algorithms are applied in parallel \cite{fazenda2012,di2013towards,FlexGP}.
