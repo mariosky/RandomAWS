@@ -206,21 +206,28 @@ an additional layer on the algorithm so that it optimizes the
 parameters needed to obtain solutions efficiently. There are many
 approaches to optimal EA parametrization since the first papers;
 approaches were initially reviewed in \cite{de2007parameter}, with more
-recent reviews published by Karafotias et al. \cite{6747993} and Aleti
-and Moser \cite{Aleti2016}. However, with the popularity and affordability of computing
+recent reviews published Aleti
+and Moser \cite{Aleti2016} and Parpinelli et
+al. \cite{doi:10.1504/IJBIC.2019.097731}; Gomes Pereira et
+al. \cite{GOMESPEREIRADELACERDA2021100777}, besides, add swarm
+algorithms to the review. However, with the popularity and affordability of computing
 power, meta-level approaches have been preferred: one of the most
 successful approaches is the F-Racing and iterative F-Racing
 techniques \cite{lopez2011irace}; these use optimization techniques to
-explore the parameter space; parameter setting can also be approached
+explore the parameter space (like, for instance, was used recently
+here \cite{9308135}; parameter setting can also be approached
 theoretically, at least in a class of optimization problems, as proved
 by Doerr et al. in \cite{doerr2020theory}. However, this implies that
 either you need to run a meta-algorithm in order to find an efficient
 parametrization, or try to look for a theoretical approach to the
 specific problem that is able to give you a good parametrization.
 
-In this paper, we will take a lateral approach to this problem,
-inspired by the approach proposed by Gong and Fukunaga called RPSS
-\cite{fuku1,fuku2}.  Originally proposed for an Island Model EA, RPSS
+In this paper, we will take a lateral approach to this problem, since
+we are not so much interested in optimization of the parameters but on
+running an algorithm that is able to obtain good results leaving some
+parameters out of the tuning (or optimization) process. Our approach
+is inspired by the one proposed by Gong and Fukunaga called RPSS
+\cite{fuku1,fuku2}, originally for an Island Model EA. This method
 sets the parameter values of each subpopulation randomly, without any
 kind of tuning or self-adaptive process; parameters of each
 subpopulation are set when the island
@@ -229,16 +236,16 @@ competitive results while substantially reducing the amount of effort
 required to tune the system.
 
 Our take on this method and its application to other kind of
-distributed evolutionary algorithms was published in
+distributed evolutionary algorithms was introduced in
 \cite{LNCS86720702}, where we proved that in effect our implementation
 of RPSS, RPW, can be successfully applied to a PEA. However, in that
 work the approach was only tested on the P-Peaks generator of
 multi-modal problems proposed by De Jong et al. \cite{Jong:PS97}.
-While the problem is theoretically interesting, it can be limited in
+While that problem is theoretically interesting, it can be limited in
 scope given its reliance on a bit string representation. Therefore,
 this work extends the study considering another binary representation
 problem (OneMax) as well as five high-dimensional real-valued
-optimization benchmarks. Our goal is to test how general is this
+optimization benchmarks. Our goal in this paper is to test how general is this
 approach by considering different search spaces and different forms of
 fitness landscapes, which is why we have used these functions, quite
 popular for benchmarking, and which will allow us to design the setup
