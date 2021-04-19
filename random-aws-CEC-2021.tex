@@ -214,8 +214,8 @@ algorithms to the review. However, with the popularity and affordability of comp
 power, meta-level approaches have been preferred: one of the most
 successful approaches is the F-Racing and iterative F-Racing
 techniques \cite{lopez2011irace}; these use optimization techniques to
-explore the parameter space (like, for instance, was used recently
-here \cite{9308135}; parameter setting can also be approached
+explore the parameter space (as, for instance, was used recently
+here \cite{9308135}); parameter setting can also be approached
 theoretically, at least in a class of optimization problems, as proved
 by Doerr et al. in \cite{doerr2020theory}. However, this implies that
 either you need to run a meta-algorithm in order to find an efficient
@@ -264,7 +264,7 @@ that can later be used in real-world functions.
 The EvoSpace framework, which was introduced in \cite{Evospace}, and
 since then used in different applications
 \cite{GValdez2015,garcia2017evospace}, is functionally divided in two
-parts, which are also shown in figure \ref{fig:evospace}, the EvoSpace
+parts, which are also shown in Figure \ref{fig:evospace}, the EvoSpace
 {\em pool}, with the evolving population that is decoupled from the
 workers, which we call EvoWorkers, and are the ones actually
 performing the evolutionary process transiently on the population,
@@ -273,11 +273,11 @@ whose origin and destination always is the EvoSpace Pool.
 In a basic EvoSpace configuration, a certain number of EvoWorkers request a small random sample of the
 population, the size of this sample is specified by the {\em Population Size} parameter (see Table \ref{tab:params}).
 Using this sample as the initial seed for a local EA executed
-on the clients, containers or cloud instances;  In this case, we implemented the 
+on the clients, containers or cloud instances;  in this case, we implemented the 
 local EA of each worker using the DEAP Python
 library \cite{fortin2012deap} using the following parameters: For OneMax, two-point crossover,
 tournament selection, tournament size=4, and bit-flip mutation.  We used
-Gaussian mutation for continuous functions with mu=0 and sigma=0.5 and the
+Gaussian mutation for continuous functions with $\mu=0$ and $\sigma=0.5$ and the
 initial random values in the [-5,5] range. The number of generations and 
 the number of times an EvoWorker takes a sample depend on the problem size,
 these parameters are also reported in Table \ref{tab:params}. After the 
@@ -340,7 +340,7 @@ The other parameters and design choices used by EvoSpace and the EvoWorkers in o
 Table \ref{tab:params}. Additionally, for the binary OneMax problem bit-flip mutation
 is used with an independent probability for each attribute to be flipped (indpb) of $0.05$,
 a two point crossover and a tournament selection of size 3. For the real-valued problems a Gaussian
-mutation was applied with mu=$0$, sigma=$0.2$, and indpb=$0.05$; two point crossover and
+mutation was applied with $\mu=0$, $\sigma=0.2$, and indpb=$0.05$; two point crossover and
 a tournament selection of three. These values are kept static to measure only the effect of the
 parameters mentioned above.
 
